@@ -1,4 +1,4 @@
-# CDAC ACTS PUNE PG-DAC SEP-2023 Assignment
+# CDAC ACTS PUNE PG-DAC SEP-2023 LAB Assignment , Study Material 
 
 In this repository you get all the module wise assigment of PG-DAC course of batch september 2023
 
