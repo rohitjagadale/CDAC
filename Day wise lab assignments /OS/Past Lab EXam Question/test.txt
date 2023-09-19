@@ -1,0 +1,52 @@
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Past Lab EXam Question$ nano upperCaseLowerCase.sh
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Past Lab EXam Question$ chmod +x  upperCaseLowerCase.sh 
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Past Lab EXam Question$ ./upperCaseLowerCase.sh 
+./upperCaseLowerCase.sh: line 2: read: -E: invalid option
+read: usage: read [-ers] [-a array] [-d delim] [-i text] [-n nchars] [-N nchars] [-p prompt] [-t timeout] [-u fd] [name ...]
+./upperCaseLowerCase.sh: line 3: if[[  == [A-Z]* ]]: command not found
+./upperCaseLowerCase.sh: line 4: syntax error near unexpected token `then'
+./upperCaseLowerCase.sh: line 4: `then'
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Past Lab EXam Question$ nano upperCaseLowerCase.sh
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Past Lab EXam Question$ ./upperCaseLowerCase.sh 
+./upperCaseLowerCase.sh: line 2: read: `-': not a valid identifier
+./upperCaseLowerCase.sh: line 3: if[[  == [A-Z]* ]]: command not found
+./upperCaseLowerCase.sh: line 4: syntax error near unexpected token `then'
+./upperCaseLowerCase.sh: line 4: `then'
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Past Lab EXam Question$ nano upperCaseLowerCase.sh
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Past Lab EXam Question$ ./upperCaseLowerCase.sh 
+Enter the stringabs
+String is in Lower case
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Past Lab EXam Question$ ./upperCaseLowerCase.sh 
+Enter the stringABC
+String is in Upper case
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Past Lab EXam Question$ ./upperCaseLowerCase.sh 
+Enter the stringaBC
+String is in Lower case
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Past Lab EXam Question$ nano upperCaseLowerCase.sh
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Past Lab EXam Question$ nano pidnumber.sh
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Past Lab EXam Question$ chmod +x pidnumber.sh
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Past Lab EXam Question$ ./pidnumber.sh 
+Enter the upper limit : 10
+./pidnumber.sh: line 3: conditional binary operator expected
+./pidnumber.sh: line 3: syntax error near `-ls'
+./pidnumber.sh: line 3: `if [[ $limit -ls 0 ] || [ $limit -gt 100 ]]'
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Past Lab EXam Question$ nano pidnumber.sh
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Past Lab EXam Question$ ./pidnumber.sh 
+Enter the upper limit : 10
+./pidnumber.sh: line 3: syntax error in conditional expression
+./pidnumber.sh: line 3: syntax error near `]'
+./pidnumber.sh: line 3: `if [[ $limit -lt 0 ] || [ $limit -gt 100 ]]'
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Past Lab EXam Question$ nano pidnumber.sh
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Past Lab EXam Question$ ./pidnumber.sh 
+Enter the upper limit : 10
+PID of process is : 24280
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
