@@ -1,0 +1,153 @@
+
+ Day 2
+
+Concept:   Shell Scripting, filters
+
+Objective: At the end of the assignment, participants will be able to understand and 
+                  implement:
+·       Regular expressions and grep
+·       Shell fundamentals
+·       Using basic UNIX commands and filters as building blocks
+·       The commands as conditions for decision making in shell scripts
+·       Shell Scripting constructs
+
+=====================================================================================
+
+1]     List only the directories in your current directory
+
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Practice$ ls -d */
+'test 1/'  'test 2/'
+
+
+=====================================================================================
+
+2] Display the name and count of the directories in the current directory.
+
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Practice$ ls -d */;ls -d */|wc -l
+'test 1/'  'test 2/'
+2
+
+
+=====================================================================================
+
+5.     Assign a value “Black” to var1 and then display the following message on the terminal using this variable.
+      var1="Black"
+
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Practice$ var="Black"
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Practice$ echo $var belt is associated with carrot
+Black belt is associated with carrot
+
+
+=====================================================================================
+
+
+16.  Write a shell script which will accept three nos. from the keyboard and finds the largest of them.
+
+
+
+!/bin/bash
+ read -p "enter first no " fn
+read -p "enter second no " sn
+read -p "enter third no " tn
+if [ $fn -gt $sn ]
+then
+        if [ $fn -gt $tn ]
+        then
+                echo $fn "is greatest"
+        else
+                echo $tn "is greatest"
+        fi
+else
+         if [ $sn -gt $tn ]
+         then
+                 echo $sn "is greatest"
+         else
+                 echo $tn "is greatest"
+         fi
+fi
+
+
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Answer$ ./largestOfThree.sh
+enter first no 12
+enter second no 14
+enter third no 1
+14 is greatest
+
+=====================================================================================
+
+
+17.  Write a shell script which will accept three nos. from the keyboard and finds the smallest of them.
+
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Answer$ nano smallestOfThree.sh
+
+                                                                                                                                                    
+#!/bin/bash
+read -p "Enter the first Number" fn
+read -p "Enter the second Number" sn
+read -p "Enter the third Number" tn
+
+if [ $fn -lt $sn ]
+then
+if [ $fn -lt $tn ]
+then
+echo $fn "number is smallest"
+else
+$tn "Number is smallest"
+fi
+else
+if [ $sn -lt $tn ]
+then
+echo $sn "Number is Samllest"
+else
+echo $tn "Number is Smallest"
+fi
+fi
+
+
+
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Answer$ chmod 701 smallestOfThree.sh
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Answer$ ./smallestOfThree.sh 
+Enter the first Number12
+Enter the second Number12
+Enter the third Number12
+12 Number is Smallest
+
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Answer$ ./smallestOfThree.sh 
+Enter the first Number12
+Enter the second Number3
+Enter the third Number4
+3 Number is Samllest
+
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Answer$ ./smallestOfThree.sh 
+Enter the first Number1
+Enter the second Number2
+Enter the third Number45
+1 number is smallest
+
+
+=====================================================================================
+
+18.  Write a shell script which will calculate the factorial of an integer entered from the keyboard.
+
+#!/bin/bash
+read -p "Enter the Number for factorial" num
+fact=1;
+for((i=num;i>0;i--))
+do
+let fact=fact*i
+done
+echo $fact
+
+
+dac@dac-Veriton-M200-H310:~/Batch 1/Batch 1 OSLinux Lab Practice/Answer$ ./factorial.sh 
+Enter the Number for factorial12
+479001600
+
+
+
+=====================================================================================
+
+
+
+
+
