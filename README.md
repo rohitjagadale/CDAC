@@ -1,6 +1,6 @@
-# CDAC ACTS PUNE PG-DAC SEP-2023 LAB Assignment , Study Material 
+# CDAC ACTS PUNE PG-DAC SEP-2023 LAB Assignment , Study Material , CDAC NOTES , SUNBEAM NOTES , CCEE QUESTION AND ANSWERS
 
-In this repository you get all the module wise assigment of PG-DAC course of batch september 2023
+In this repository you get all the module wise assigment of PG-DAC course of batch september 2023 which will be going update daily as course proceed further so save this repository 
 
 Welcome to the CDAC PG-DAC Practical Lab Resources repository for the CDAC ACTS Pune center. This comprehensive repository is your one-stop destination for all the essential materials related to the PG-DAC course, equipping you with the tools and knowledge needed to excel in your studies.
 
