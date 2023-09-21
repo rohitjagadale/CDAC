@@ -1,0 +1,63 @@
+sudo apt update
+
+sudo apt install mysql-server
+
+rohit@Rohit-Jagdale-1:~$ sudo mysql -u root
+
+
+                                                                                                                                                                     [ OK ]
+rohit@Rohit-Jagdale-1:~$ ps aux | grep mysql
+mysql     1194  0.0  0.0   2884  1860 ?        S    09:22   0:00 /bin/sh /usr/bin/mysqld_safe
+mysql     1341  4.7 10.1 2439968 397476 ?      Sl   09:22   0:00 /usr/sbin/mysqld --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib/mysql/plugin --log-error=/var/log/mysql/error.log --pid-file=Rohit-Jagdale-1.pid
+rohit     1409  0.0  0.0   4020  1984 pts/0    S+   09:22   0:00 grep --color=auto mysql
+
+
+
+mysql> create database pgdac;
+Query OK, 1 row affected (0.03 sec)
+
+
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| pgdac              |
+| sys                |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql> use pgdac;
+Database changed
+
+
+
+
+mysql> show tables;
++-----------------+
+| Tables_in_pgdac |
++-----------------+
+| student         |
++-----------------+
+1 row in set (0.01 sec)
+
+
+
+
+
+
+mysql> describe student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int         | YES  |     | NULL    |       |
+| name  | varchar(10) | YES  |     | NULL    |       |
+| marks | float       | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+
