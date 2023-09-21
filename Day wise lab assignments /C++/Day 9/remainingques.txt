@@ -1,1 +1,308 @@
+2. Implement a Date class with following member functions. Also overload remaining relational operators to compare two dates.
+   Also write a small program to demonstrate the use of Date class and overloaded relational operators.
+class Date {
+	int day;
+	int month;
+	int year;
+public:
+	Date();
+	Date(int d, int m, int y);
+	void Read();
+	void Write();
+	bool operator==(Date obj2);
+};
 
+
+
+
+
+
+
+
+
+#include <iostream>
+
+class Date {
+private:
+    int day;
+    int month;
+    int year;
+
+public:
+    Date() : day(1), month(1), year(2000) {}
+
+    Date(int d, int m, int y) : day(d), month(m), year(y) {}
+
+    void Read() {
+        std::cout << "Enter day, month, and year (e.g., 21 9 2023): ";
+        std::cin >> day >> month >> year;
+    }
+
+    void Write() {
+        std::cout << day << "/" << month << "/" << year;
+    }
+
+    bool operator==(const Date& obj2) {
+        return (day == obj2.day && month == obj2.month && year == obj2.year);
+    }
+
+    bool operator!=(const Date& obj2) {
+        return !(*this == obj2);
+    }
+
+    bool operator<(const Date& obj2) {
+        if (year < obj2.year)
+            return true;
+        else if (year == obj2.year && month < obj2.month)
+            return true;
+        else if (year == obj2.year && month == obj2.month && day < obj2.day)
+            return true;
+        else
+            return false;
+    }
+
+    bool operator<=(const Date& obj2) {
+        return (*this < obj2 || *this == obj2);
+    }
+
+    bool operator>(const Date& obj2) {
+        return !(*this <= obj2);
+    }
+
+    bool operator>=(const Date& obj2) {
+        return !(*this < obj2);
+    }
+};
+
+int main() {
+    Date date1, date2;
+
+    std::cout << "Enter the first date:" << std::endl;
+    date1.Read();
+
+    std::cout << "Enter the second date:" << std::endl;
+    date2.Read();
+
+    std::cout << "Date 1: ";
+    date1.Write();
+    std::cout << std::endl;
+
+    std::cout << "Date 2: ";
+    date2.Write();
+    std::cout << std::endl;
+
+    if (date1 == date2) {
+        std::cout << "Date 1 is equal to Date 2." << std::endl;
+    } else if (date1 < date2) {
+        std::cout << "Date 1 is earlier than Date 2." << std::endl;
+    } else {
+        std::cout << "Date 1 is later than Date 2." << std::endl;
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+3. Design (define what all constructors, member functions and operator functions to overload relational operators) and implement them.
+   Also write a small program to demonstrate the use of String class and overloaded relational operators.
+
+
+
+
+To design a String class with overloaded relational operators, we'll need to define the following constructors, member functions, and operator functions:
+
+1. Constructors:
+   - Default constructor: Creates an empty string.
+   - Parameterized constructor: Initializes the string with a given character array or C++ string.
+
+2. Member functions:
+   - `length()`: Returns the length of the string.
+   - `empty()`: Checks if the string is empty.
+   - `clear()`: Clears the contents of the string.
+   - `substr(int start, int length)`: Returns a substring starting from the `start` index and of the specified `length`.
+   - `at(int index)`: Returns the character at a specified index.
+   - `append(const String& str)`: Appends another String object to the current string.
+
+3. Operator functions to overload relational operators:
+   - `==`: Compares if two String objects are equal.
+   - `!=`: Compares if two String objects are not equal.
+   - `<`: Checks if one String object is less than another.
+   - `<=`: Checks if one String object is less than or equal to another.
+   - `>`: Checks if one String object is greater than another.
+   - `>=`: Checks if one String object is greater than or equal to another.
+
+Now, let's implement the String class and a small program to demonstrate its use:
+
+```cpp
+#include <iostream>
+#include <cstring>
+
+class String {
+private:
+    char* str;
+    int len;
+
+public:
+    // Constructors
+    String() : str(nullptr), len(0) {}
+    
+    String(const char* s) {
+        len = strlen(s);
+        str = new char[len + 1];
+        strcpy(str, s);
+    }
+    
+    String(const String& other) {
+        len = other.len;
+        str = new char[len + 1];
+        strcpy(str, other.str);
+    }
+    
+    ~String() {
+        delete[] str;
+    }
+
+    // Member functions
+    int length() const {
+        return len;
+    }
+
+    bool empty() const {
+        return len == 0;
+    }
+
+    void clear() {
+        delete[] str;
+        str = nullptr;
+        len = 0;
+    }
+
+    String substr(int start, int length) const {
+        if (start < 0 || start >= len || length <= 0) {
+            return String();
+        }
+
+        int substrLen = (start + length <= len) ? length : (len - start);
+        char* sub = new char[substrLen + 1];
+        strncpy(sub, str + start, substrLen);
+        sub[substrLen] = '\0';
+        return String(sub);
+    }
+
+    char at(int index) const {
+        if (index >= 0 && index < len) {
+            return str[index];
+        }
+        return '\0';
+    }
+
+    void append(const String& other) {
+        int newLen = len + other.len;
+        char* newStr = new char[newLen + 1];
+        strcpy(newStr, str);
+        strcat(newStr, other.str);
+        delete[] str;
+        str = newStr;
+        len = newLen;
+    }
+
+    // Operator functions to overload relational operators
+    bool operator==(const String& other) const {
+        return strcmp(str, other.str) == 0;
+    }
+
+    bool operator!=(const String& other) const {
+        return !(*this == other);
+    }
+
+    bool operator<(const String& other) const {
+        return strcmp(str, other.str) < 0;
+    }
+
+    bool operator<=(const String& other) const {
+        return strcmp(str, other.str) <= 0;
+    }
+
+    bool operator>(const String& other) const {
+        return strcmp(str, other.str) > 0;
+    }
+
+    bool operator>=(const String& other) const {
+        return strcmp(str, other.str) >= 0;
+    }
+
+    // Display the string
+    void display() const {
+        std::cout << str;
+    }
+};
+
+int main() {
+    String s1("Hello");
+    String s2("World");
+    String s3("Hello");
+    
+    std::cout << "s1: ";
+    s1.display();
+    std::cout << std::endl;
+
+    std::cout << "s2: ";
+    s2.display();
+    std::cout << std::endl;
+
+    std::cout << "s3: ";
+    s3.display();
+    std::cout << std::endl;
+
+    // Comparing strings
+    if (s1 == s2) {
+        std::cout << "s1 is equal to s2." << std::endl;
+    } else {
+        std::cout << "s1 is not equal to s2." << std::endl;
+    }
+
+    if (s1 == s3) {
+        std::cout << "s1 is equal to s3." << std::endl;
+    } else {
+        std::cout << "s1 is not equal to s3." << std::endl;
+    }
+
+    if (s1 < s2) {
+        std::cout << "s1 is less than s2." << std::endl;
+    } else {
+        std::cout << "s1 is not less than s2." << std::endl;
+    }
+
+    if (s1 <= s3) {
+        std::cout << "s1 is less than or equal to s3." << std::endl;
+    } else {
+        std::cout << "s1 is not less than or equal to s3." << std::endl;
+    }
+
+    if (s2 > s3) {
+        std::cout << "s2 is greater than s3." << std::endl;
+    } else {
+        std::cout << "s2 is not greater than s3." << std::endl;
+    }
+
+    if (s2 >= s1) {
+        std::cout << "s2 is greater than or equal to s1." << std::endl;
+    } else {
+        std::cout << "s2 is not greater than or equal to s1." << std::endl;
+    }
+
+    return 0;
+}
+```
+
+In this program, we define the String class with constructors, member functions, and operator overloads for relational operators. We then demonstrate the use of the String class and compare strings using these overloaded operators.
