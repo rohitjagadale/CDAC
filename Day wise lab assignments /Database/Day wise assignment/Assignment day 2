@@ -1,0 +1,145 @@
+Assignment No. 2
+Create a database named college
+Create a table name student in college database with following structure
+roll,name,class,marks,age with respective datatypes.
+Check the structure of the table.
+Alter the datatype of marks from float to integer
+Alter the table to remove the column age
+Show all the tables in database college.
+Truncate the table student
+Drop the table and database also.
+
+------------------------------------------------------------------------------------------------------------
+
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cdacdb             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| pgdac              |
+| pgdacdb            |
+| sys                |
++--------------------+
+7 rows in set (0.01 sec)
+
+mysql> create database college;
+\Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cdacdb             |
+| college            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| pgdac              |
+| pgdacdb            |
+| sys                |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use college;
+Database changed
+mysql> create table student(
+    -> roll int,
+    -> name varchar(10),
+    -> class varchar(10),
+    -> marks float,
+    -> age int
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int         | YES  |     | NULL    |       |
+| name  | varchar(10) | YES  |     | NULL    |       |
+| class | varchar(10) | YES  |     | NULL    |       |
+| marks | float       | YES  |     | NULL    |       |
+| age   | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> ALTER table student modify column marks int;
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int         | YES  |     | NULL    |       |
+| name  | varchar(10) | YES  |     | NULL    |       |
+| class | varchar(10) | YES  |     | NULL    |       |
+| marks | int         | YES  |     | NULL    |       |
+| age   | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> ALTER table student drop column age;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int         | YES  |     | NULL    |       |
+| name  | varchar(10) | YES  |     | NULL    |       |
+| class | varchar(10) | YES  |     | NULL    |       |
+| marks | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_college |
++-------------------+
+| student           |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> TRUNCATE table student;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int         | YES  |     | NULL    |       |
+| name  | varchar(10) | YES  |     | NULL    |       |
+| class | varchar(10) | YES  |     | NULL    |       |
+| marks | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> drop table student;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> drop database college;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cdacdb             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| pgdac              |
+| pgdacdb            |
+| sys                |
++--------------------+
+7 rows in set (0.00 sec)
+
