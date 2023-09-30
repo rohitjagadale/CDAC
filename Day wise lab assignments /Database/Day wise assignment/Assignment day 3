@@ -1,0 +1,276 @@
+Assignment No. 3
+Create a database named college
+Create a table name student in college database with following structure
+roll,name,class,marks,age with respective datatypes.
+Insert at least 5 rows in the table.
+Delete the entry of roll number 4
+Update the marks of roll number 3
+Give additional grace marks of 0.5 to all students.
+Truncate the table
+Insert the data again using multi-insert statement.
+
+------------------------------------------------------------------------------------
+
+dac@dac-Veriton-M200-H310:~$ sudo mysql -u root
+[sudo] password for dac: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.34-0ubuntu0.22.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cdacdb             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| pgdac              |
+| pgdacdb            |
+| sys                |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> create database college;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cdacdb             |
+| college            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| pgdac              |
+| pgdacdb            |
+| sys                |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use college;
+Database changed
+mysql> create table student(
+    -> roll int primary key,
+    -> name varchar(10),\
+    -> select *from custtbl;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select *from custtbl' at line 4
+mysql> create table student
+    -> (
+    -> roll int primary key,
+    -> name varchar(10),
+    -> class varchar(10),
+    -> marks float,
+    -> age int
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_college |
++-------------------+
+| student           |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int         | NO   | PRI | NULL    |       |
+| name  | varchar(10) | YES  |     | NULL    |       |
+| class | varchar(10) | YES  |     | NULL    |       |
+| marks | float       | YES  |     | NULL    |       |
+| age   | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> INSERT INTO student values (1,sachin,BE,90.45,22);
+ERROR 1054 (42S22): Unknown column 'sachin' in 'field list'
+mysql> INSERT INTO student values (2,dhoni,TE,95.45,20);
+ERROR 1054 (42S22): Unknown column 'dhoni' in 'field list'
+mysql> INSERT INTO student values (3,virat,SE,98.95,19);
+ERROR 1054 (42S22): Unknown column 'virat' in 'field list'
+mysql> INSERT INTO student values (4,ROHIT,TE,85.35,21);
+ERROR 1054 (42S22): Unknown column 'ROHIT' in 'field list'
+mysql> INSERT INTO student values (5,jadeja,FE,80.45,19);\
+ERROR 1054 (42S22): Unknown column 'jadeja' in 'field list'
+mysql> INSERT INTO student values (1,'sachin','BE',90.45,22);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO student values (2,'dhoni','TE',95.45,20);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO student values (3,'virat','SE',98.95,19);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO student values (4,'ROHIT','TE',85.35,21);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO student values (5,'jadeja','FE',80.45,19);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++------+--------+-------+-------+------+
+| roll | name   | class | marks | age  |
++------+--------+-------+-------+------+
+|    1 | sachin | BE    | 90.45 |   22 |
+|    2 | dhoni  | TE    | 95.45 |   20 |
+|    3 | virat  | SE    | 98.95 |   19 |
+|    4 | ROHIT  | TE    | 85.35 |   21 |
+|    5 | jadeja | FE    | 80.45 |   19 |
++------+--------+-------+-------+------+
+5 rows in set (0.00 sec)
+
+mysql> DELETE from student where roll = 4;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from student;
++------+--------+-------+-------+------+
+| roll | name   | class | marks | age  |
++------+--------+-------+-------+------+
+|    1 | sachin | BE    | 90.45 |   22 |
+|    2 | dhoni  | TE    | 95.45 |   20 |
+|    3 | virat  | SE    | 98.95 |   19 |
+|    5 | jadeja | FE    | 80.45 |   19 |
++------+--------+-------+-------+------+
+4 rows in set (0.00 sec)
+
+mysql> UPDATE student SET marks=96.10 where roll=3;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++------+--------+-------+-------+------+
+| roll | name   | class | marks | age  |
++------+--------+-------+-------+------+
+|    1 | sachin | BE    | 90.45 |   22 |
+|    2 | dhoni  | TE    | 95.45 |   20 |
+|    3 | virat  | SE    |  96.1 |   19 |
+|    5 | jadeja | FE    | 80.45 |   19 |
++------+--------+-------+-------+------+
+4 rows in set (0.00 sec)
+
+mysql> select name,marks from student;
++--------+-------+
+| name   | marks |
++--------+-------+
+| sachin | 90.45 |
+| dhoni  | 95.45 |
+| virat  |  96.1 |
+| jadeja | 80.45 |
++--------+-------+
+4 rows in set (0.00 sec)
+
+mysql> UPDATE student SET marks=marks=0.5;
+Query OK, 4 rows affected (0.01 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+
+mysql> select * from student;
++------+--------+-------+-------+------+
+| roll | name   | class | marks | age  |
++------+--------+-------+-------+------+
+|    1 | sachin | BE    |     0 |   22 |
+|    2 | dhoni  | TE    |     0 |   20 |
+|    3 | virat  | SE    |     0 |   19 |
+|    5 | jadeja | FE    |     0 |   19 |
++------+--------+-------+-------+------+
+4 rows in set (0.00 sec)
+
+mysql> update student set marks=67 where roll in (1,3);
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update student set marks=78 where roll in (2,5);
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from student;
++------+--------+-------+-------+------+
+| roll | name   | class | marks | age  |
++------+--------+-------+-------+------+
+|    1 | sachin | BE    |    67 |   22 |
+|    2 | dhoni  | TE    |    78 |   20 |
+|    3 | virat  | SE    |    67 |   19 |
+|    5 | jadeja | FE    |    78 |   19 |
++------+--------+-------+-------+------+
+4 rows in set (0.00 sec)
+
+mysql> UPDATE student SET marks = marks+0.5;
+Query OK, 4 rows affected (0.01 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+
+mysql> select * from student;
++------+--------+-------+-------+------+
+| roll | name   | class | marks | age  |
++------+--------+-------+-------+------+
+|    1 | sachin | BE    |  67.5 |   22 |
+|    2 | dhoni  | TE    |  78.5 |   20 |
+|    3 | virat  | SE    |  67.5 |   19 |
+|    5 | jadeja | FE    |  78.5 |   19 |
++------+--------+-------+-------+------+
+4 rows in set (0.00 sec)
+
+mysql> TRUNCATE student;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select * from student;
+Empty set (0.00 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int         | NO   | PRI | NULL    |       |
+| name  | varchar(10) | YES  |     | NULL    |       |
+| class | varchar(10) | YES  |     | NULL    |       |
+| marks | float       | YES  |     | NULL    |       |
+| age   | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> INSERT INTO student VALUES(
+    -> (1,'sachin','BE',90.45,22),)
+    -> 
+    -> 
+    -> ^C
+mysql> INSERT INTO student values(
+    -> (1,'sachin','BE',90.45,22),
+    -> (2,'dhoni','TE',95.45,20),
+    -> (3,'virat','SE',98.95,19),
+    -> (4,'ROHIT','TE',85.35,21),
+    -> (5,'jadeja','FE',80.45,19)
+    -> );
+ERROR 1241 (21000): Operand should contain 1 column(s)
+mysql> INSERT INTO student values
+    -> (1,'sachin','BE',90.45,22),
+    -> (2,'dhoni','TE',95.45,20),
+    -> (3,'virat','SE',98.95,19),
+    -> (4,'ROHIT','TE',85.35,21),
+    -> (5,'jadeja','FE',80.45,19)
+    -> ;
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++------+--------+-------+-------+------+
+| roll | name   | class | marks | age  |
++------+--------+-------+-------+------+
+|    1 | sachin | BE    | 90.45 |   22 |
+|    2 | dhoni  | TE    | 95.45 |   20 |
+|    3 | virat  | SE    | 98.95 |   19 |
+|    4 | ROHIT  | TE    | 85.35 |   21 |
+|    5 | jadeja | FE    | 80.45 |   19 |
++------+--------+-------+-------+------+
+5 rows in set (0.00 sec)
+
+

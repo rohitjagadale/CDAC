@@ -1,0 +1,386 @@
+Assignment No. 4
+Create a database named college
+Create a table name student in college database with following structure
+roll,name,class,marks,age with respective datatypes.
+Apply the following MySQL clause to this table.
+Creating, Altering, Dropping Constraints
+Aggregate Functions: SUM(), AVG(), COUNT(), MAX(), MIN(), COUNT(), Group By, Having
+Clause
+Using Like, Distinct, Order By, Between...And
+Comparing Nulls, Using IN/Not-In
+
+---------------------------------------------------------------------------------------
+
+
+mysql> create database college;
+ERROR 1007 (HY000): Can't create database 'college'; database exists
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| b1db               |
+| cdacdb             |
+| college            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| pgdac              |
+| pgdacb2            |
+| pgdacdb            |
+| sys                |
++--------------------+
+10 rows in set (0.01 sec)
+
+mysql> use college;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_college |
++-------------------+
+| student           |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int         | YES  |     | NULL    |       |
+| name  | varchar(15) | YES  |     | NULL    |       |
+| class | varchar(3)  | YES  |     | NULL    |       |
+| marks | float       | YES  |     | NULL    |       |
+| age   | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> select * from student;
+Empty set (0.01 sec)
+
+mysql> insert into student values(
+    -> (101,'maya','TY',87,20),
+    -> (102,'manoj','FE',89.9,22),
+    -> (103,'maroti','BE',36.78,21),
+    -> (104,'manish','BE',87.32,20),
+    -> (105,'mayur','SE',77,25)
+    -> );
+ERROR 1241 (21000): Operand should contain 1 column(s)
+mysql> insert into student values
+    -> (101,'maya','TY',87,20),
+    -> (102,'manoj','FE',89.9,22),
+    -> (103,'maroti','BE',36.78,21),
+    -> (104,'manish','BE',87.32,20),
+    -> (105,'mayur','SE',77,25);
+Query OK, 5 rows affected (0.00 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++------+--------+-------+-------+------+
+| roll | name   | class | marks | age  |
++------+--------+-------+-------+------+
+|  101 | maya   | TY    |    87 |   20 |
+|  102 | manoj  | FE    |  89.9 |   22 |
+|  103 | maroti | BE    | 36.78 |   21 |
+|  104 | manish | BE    | 87.32 |   20 |
+|  105 | mayur  | SE    |    77 |   25 |
++------+--------+-------+-------+------+
+5 rows in set (0.00 sec)
+
+mysql> select sum(marks) as SUM from student;
++------+
+| SUM  |
++------+
+|  378 |
++------+
+1 row in set (0.00 sec)
+
+mysql> select avg(marks) as AVG from student;
++------+
+| AVG  |
++------+
+| 75.6 |
++------+
+1 row in set (0.00 sec)
+
+mysql> select count(roll) as ROLL from student;
++------+
+| ROLL |
++------+
+|    5 |
++------+
+1 row in set (0.00 sec)
+
+mysql> select MAX(name) as MAX from student;
++-------+
+| MAX   |
++-------+
+| mayur |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select min(name) as MAX from student;
++--------+
+| MAX    |
++--------+
+| manish |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select min(marks) as min from student;
++-------+
+| min   |
++-------+
+| 36.78 |
++-------+
+1 row in set (0.00 sec)
+
+mysql> selct class , max(marks) from student group by class;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selct class , max(marks) from student group by class' at line 1
+mysql> select class , max(marks) from student group by class;
++-------+------------+
+| class | max(marks) |
++-------+------------+
+| TY    |         87 |
+| FE    |       89.9 |
+| BE    |      87.32 |
+| SE    |         77 |
++-------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select class , min(marks) from student group by class;
++-------+------------+
+| class | min(marks) |
++-------+------------+
+| TY    |         87 |
+| FE    |       89.9 |
+| BE    |      36.78 |
+| SE    |         77 |
++-------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select age,count(age) from student group by age;
++------+------------+
+| age  | count(age) |
++------+------------+
+|   20 |          2 |
+|   22 |          1 |
+|   21 |          1 |
+|   25 |          1 |
++------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select age,avg(marks) from student group by age having age>21;
++------+------------------+
+| age  | avg(marks)       |
++------+------------------+
+|   22 | 89.9000015258789 |
+|   25 |               77 |
++------+------------------+
+2 rows in set (0.01 sec)
+
+mysql> select roll,max(marks) from student group by roll having roll>102;
++------+------------+
+| roll | max(marks) |
++------+------------+
+|  103 |      36.78 |
+|  104 |      87.32 |
+|  105 |         77 |
++------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select name from student like "%a";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'like "%a"' at line 1
+mysql> select name from student where name like "%a";
++------+
+| name |
++------+
+| maya |
++------+
+1 row in set (0.00 sec)
+
+mysql> select name from student where name like "%";
++--------+
+| name   |
++--------+
+| maya   |
+| manoj  |
+| maroti |
+| manish |
+| mayur  |
++--------+
+5 rows in set (0.00 sec)
+
+mysql> select name from student where name like "man%";
++--------+
+| name   |
++--------+
+| manoj  |
+| manish |
++--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from student where name like "____";
++------+------+-------+-------+------+
+| roll | name | class | marks | age  |
++------+------+-------+-------+------+
+|  101 | maya | TY    |    87 |   20 |
++------+------+-------+-------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from student where name like "_____";
++------+-------+-------+-------+------+
+| roll | name  | class | marks | age  |
++------+-------+-------+-------+------+
+|  102 | manoj | FE    |  89.9 |   22 |
+|  105 | mayur | SE    |    77 |   25 |
++------+-------+-------+-------+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from student where name like "___a";
++------+------+-------+-------+------+
+| roll | name | class | marks | age  |
++------+------+-------+-------+------+
+|  101 | maya | TY    |    87 |   20 |
++------+------+-------+-------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from student where name like "___o";
+Empty set (0.00 sec)
+
+mysql> select * from student where name like "___o%";
++------+--------+-------+-------+------+
+| roll | name   | class | marks | age  |
++------+--------+-------+-------+------+
+|  102 | manoj  | FE    |  89.9 |   22 |
+|  103 | maroti | BE    | 36.78 |   21 |
++------+--------+-------+-------+------+
+2 rows in set (0.00 sec)
+
+mysql> select distinct class from student;
++-------+
+| class |
++-------+
+| TY    |
+| FE    |
+| BE    |
+| SE    |
++-------+
+4 rows in set (0.00 sec)
+
+mysql> select distinct name from student;
++--------+
+| name   |
++--------+
+| maya   |
+| manoj  |
+| maroti |
+| manish |
+| mayur  |
++--------+
+5 rows in set (0.00 sec)
+
+mysql> select distinct age from student;
++------+
+| age  |
++------+
+|   20 |
+|   22 |
+|   21 |
+|   25 |
++------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student order by marks asc;
++------+--------+-------+-------+------+
+| roll | name   | class | marks | age  |
++------+--------+-------+-------+------+
+|  103 | maroti | BE    | 36.78 |   21 |
+|  105 | mayur  | SE    |    77 |   25 |
+|  101 | maya   | TY    |    87 |   20 |
+|  104 | manish | BE    | 87.32 |   20 |
+|  102 | manoj  | FE    |  89.9 |   22 |
++------+--------+-------+-------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from student order by marks;
++------+--------+-------+-------+------+
+| roll | name   | class | marks | age  |
++------+--------+-------+-------+------+
+|  103 | maroti | BE    | 36.78 |   21 |
+|  105 | mayur  | SE    |    77 |   25 |
+|  101 | maya   | TY    |    87 |   20 |
+|  104 | manish | BE    | 87.32 |   20 |
+|  102 | manoj  | FE    |  89.9 |   22 |
++------+--------+-------+-------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from student order by marks desc;
++------+--------+-------+-------+------+
+| roll | name   | class | marks | age  |
++------+--------+-------+-------+------+
+|  102 | manoj  | FE    |  89.9 |   22 |
+|  104 | manish | BE    | 87.32 |   20 |
+|  101 | maya   | TY    |    87 |   20 |
+|  105 | mayur  | SE    |    77 |   25 |
+|  103 | maroti | BE    | 36.78 |   21 |
++------+--------+-------+-------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from student order by name asc;
++------+--------+-------+-------+------+
+| roll | name   | class | marks | age  |
++------+--------+-------+-------+------+
+|  104 | manish | BE    | 87.32 |   20 |
+|  102 | manoj  | FE    |  89.9 |   22 |
+|  103 | maroti | BE    | 36.78 |   21 |
+|  101 | maya   | TY    |    87 |   20 |
+|  105 | mayur  | SE    |    77 |   25 |
++------+--------+-------+-------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from student where marks between 80 and 90;
++------+--------+-------+-------+------+
+| roll | name   | class | marks | age  |
++------+--------+-------+-------+------+
+|  101 | maya   | TY    |    87 |   20 |
+|  102 | manoj  | FE    |  89.9 |   22 |
+|  104 | manish | BE    | 87.32 |   20 |
++------+--------+-------+-------+------+
+3 rows in set (0.00 sec)
+
+mysql> select * from student where roll is null;
+Empty set (0.00 sec)
+
+mysql> select * from student where roll is not null;
++------+--------+-------+-------+------+
+| roll | name   | class | marks | age  |
++------+--------+-------+-------+------+
+|  101 | maya   | TY    |    87 |   20 |
+|  102 | manoj  | FE    |  89.9 |   22 |
+|  103 | maroti | BE    | 36.78 |   21 |
+|  104 | manish | BE    | 87.32 |   20 |
+|  105 | mayur  | SE    |    77 |   25 |
++------+--------+-------+-------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from student where roll IN(102,103,104);
++------+--------+-------+-------+------+
+| roll | name   | class | marks | age  |
++------+--------+-------+-------+------+
+|  102 | manoj  | FE    |  89.9 |   22 |
+|  103 | maroti | BE    | 36.78 |   21 |
+|  104 | manish | BE    | 87.32 |   20 |
++------+--------+-------+-------+------+
+3 rows in set (0.01 sec)
+
+mysql> select * from student where roll not IN(102,103,104);
++------+-------+-------+-------+------+
+| roll | name  | class | marks | age  |
++------+-------+-------+-------+------+
+|  101 | maya  | TY    |    87 |   20 |
+|  105 | mayur | SE    |    77 |   25 |
++------+-------+-------+-------+------+
+2 rows in set (0.01 sec)
+
