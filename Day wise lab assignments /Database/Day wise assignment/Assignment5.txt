@@ -1,0 +1,283 @@
+Q.1 Write a mysql statement to find the name, birth, department name, department block from the given tables.
++----+--------------+------------+------------+
+| id | name 		| dept_id 	 | birth 	  |
++----+--------------+------------+------------+
+| 1  | Maria Gloria | 2 		 | 1994-03-12 |
+| 2  | John Smith   | 1 		 | 1993-02-07 |
+| 3  | Gal Rao      | 4 		 | 1992-09-11 |
+| 4  | Jakey Smith  | 2 		 | 1990-08-31 |
+| 5  | Rama Saho    | 1 		 | 1994-12-09 |
+| 6  | Maria Gaga   | 4   		 | 1993-10-09 |
++----+--------------+------------+------------+
+
++---------+--------------------------+------------+
+| dept_id | dept_name            	 | dept_block |
++---------+--------------------------+------------+
+| 1 	  | Computer Science 		 | B-Block 	  |
+| 2 	  | Information Technology   | C-Block    |
+| 3 	  | Mechanical  		 	 | A-Block 	  |
+| 4 	  | Electronic Communication | D-Block 	  |
++---------+--------------------------+------------+
+
+mysql> select s.name, s.birth, d.dept_name, d.dept_block 
+    -> from student s, dept d 
+    -> where s.dept_id = d.dept_id;
++--------------+------------+--------------------------+------------+
+| name         | birth      | dept_name                | dept_block |
++--------------+------------+--------------------------+------------+
+| Maria Gloria | 1994-03-12 | Information Technology   | C-Block    |
+| John Smith   | 1993-02-07 | Computer Science         | B-Block    |
+| Gal Rao      | 1992-09-11 | Electronic Communication | D-Block    |
+| Jackey Smith | 1990-08-31 | Information Technology   | C-Block    |
+| Rama Saho    | 1994-12-09 | Computer Science         | B-Block    |
+| Maria Gaga   | 1993-10-09 | Electronic Communication | D-Block    |
++--------------+------------+--------------------------+------------+
+6 rows in set (0.00 sec)
+
+
+Q.2 Write a mysql statement to get name of students containing exactly five characters with ‘a’ as last letter.
+Suppose the student table is -
++----+-------+---------+------------+
+| id | name  | dept_id | birth 		|
++----+-------+---------+------------+
+| 1  | Maria | 2 	   | 1994-03-12 |
+| 2  | John  | 1 	   | 1993-02-07 |
+| 3  | Gal   | 4	   | 1992-09-11 |
+| 4  | Jakey | 2 	   | 1990-08-31 |
+| 5  | Rama  | 1 	   | 1994-12-09 |
+| 6  | Maria | 4 	   | 1993-10-09 |
++----+-------+---------+------------+
+
+mysql> select name from student where name like "%a";
++-------+
+| name  |
++-------+
+| Maria |
+| Rama  |
+| Maria |
++-------+
+3 rows in set (0.00 sec)
+
+
+Q.3 Write a mysql statement to determine the age of each of the students.
+Suppose the table is -
++----+--------------+------------+------------+
+| id | name 		| department | birth 	  |
++----+--------------+------------+------------+
+| 1  | Maria Gloria | CS 		 | 1994-03-12 |
+| 2  | John Smith   | IT 		 | 1993-02-07 |
+| 3  | Gal Rao 		| CS 		 | 1992-09-11 |
+| 4  | Jakey Smith 	| EC 		 | 1990-08-31 |
+| 5  | Rama Saho 	| IT 		 | 1994-12-09 |
+| 6  | Maria Gaga 	| EC 		 | 1993-10-09 |
++----+--------------+------------+------------+
+
+mysql> select name, birth, YEAR(FROM_DAYS(DATEDIFF(CURDATE(), birth))) as age
+    -> from student1;
++--------------+------------+------+
+| name         | birth      | age  |
++--------------+------------+------+
+| Maria Gloria | 1994-03-12 |   29 |
+| John Smith   | 1993-02-07 |   30 |
+| Gal Rao      | 1992-09-11 |   31 |
+| Jakey Smith  | 1990-08-31 |   33 |
+| Rama Saho    | 1994-12-09 |   28 |
+| Maria Gaga   | 1993-10-09 |   29 |
++--------------+------------+------+
+6 rows in set (0.00 sec)
+
+
+Q.4 These questions are based on the following two tables, Employee table and Reward table.
+
+Employee table
++-------------+------------+-----------+----------+--------------+-------------+
+| Employee_id | First_name | Last_name | Salary   | Joining_date | Departement |
++-------------+------------+-----------+----------+--------------+-------------+
+| 1 		  | Bob 	   | Kinto 	   | 1000000  | 2019-01-20   | Finance 	   |
+| 2 		  | Jerry 	   | Kansxo    | 6000000  | 2019-01-15 	 | IT 	 	   |
+| 3 		  | Philip 	   | Jose 	   | 8900000  | 2019-02-05 	 | Banking 	   |
+| 4 		  | John 	   | Abraham   | 2000000  | 2019-02-25 	 | Insurance   |
+| 5 		  | Michael    | Mathew    | 2200000  | 2019-02-28 	 | Finance     |
+| 6 		  | Alex 	   | chreketo  | 4000000  | 2019-05-10 	 | IT 		   |
+| 7 		  | Yohan 	   | Soso      | 1230000  | 2019-06-20 	 | Banking 	   |
++-------------+------------+-----------+----------+--------------+-------------+
+
+Reward table
++-----------------+-------------+--------+
+| Employee_ref_id | date_reward | amount |
++-----------------+-------------+--------+
+| 1 			  | 2019-05-11  | 1000 	 |
+| 2 		      | 2019-02-15  | 5000 	 |
+| 3 			  | 2019-04-22  | 2000 	 |
+| 1 			  | 2019-06-20  | 8000   |
++-----------------+-------------+--------+
+
+1. Get all employees.
+mysql> select * from Employee;
++-------------+---------------+----------------+---------+--------------+------------+
+| Employee_id | First_name    | Last_name      | Salary  | Joining_date | Department |
++-------------+---------------+----------------+---------+--------------+------------+
+|           1 |    Bob        |    Kinto       | 1000000 | 2019-01-20   | Finance    |
+|           2 |    Jerry      |    Kansxo      | 6000000 | 2019-01-15   | IT         |
+|           3 |    Philip     |    Jose        | 8900000 | 2019-02-05   | Banking    |
+|           4 |    John       |    Abraham     | 2000000 | 2019-02-25   | Insurance  |
+|           5 |    Michael    |    Mathew      | 2200000 | 2019-02-28   | Finance    |
+|           6 |    Alex       |    Chreketo    | 4000000 | 2019-05-10   | IT         |
+|           7 |    Yohan      |    Soso        | 1230000 | 2019-06-20   | Banking    |
++-------------+---------------+----------------+---------+--------------+------------+
+7 rows in set (0.03 sec)
+
+
+2. Display the first name and last name of all employees.
+
+mysql> select First_name, Last_name from Employee;
++---------------+----------------+
+| First_name    | Last_name      |
++---------------+----------------+
+|    Bob        |    Kinto       |
+|    Jerry      |    Kansxo      |
+|    Philip     |    Jose        |
+|    John       |    Abraham     |
+|    Michael    |    Mathew      |
+|    Alex       |    Chreketo    |
+|    Yohan      |    Soso        |
++---------------+----------------+
+7 rows in set (0.00 sec)
+
+
+3. Display all the values of the “First_Name” column using the alias “Employee Name”
+mysql> select First_name as "Employee Name" from Employee;
++---------------+
+| Employee Name |
++---------------+
+|    Bob        |
+|    Jerry      |
+|    Philip     |
+|    John       |
+|    Michael    |
+|    Alex       |
+|    Yohan      |
++---------------+
+7 rows in set (0.00 sec)
+
+
+4. Get all “Last_Name” in lowercase.
+mysql> select LCASE(Last_name) as "Last Name in Lower case" from Employee;
++-------------------------+
+| Last Name in Lower case |
++-------------------------+
+|    kinto                |
+|    kansxo               |
+|    jose                 |
+|    abraham              |
+|    mathew               |
+|    chreketo             |
+|    soso                 |
++-------------------------+
+7 rows in set (0.00 sec)
+
+
+5. Get all “Last_Name” in uppercase.
+mysql> select UCASE(Last_name) as "Last Name in Upper case" from Employee;
++-------------------------+
+| Last Name in Upper case |
++-------------------------+
+|    KINTO                |
+|    KANSXO               |
+|    JOSE                 |
+|    ABRAHAM              |
+|    MATHEW               |
+|    CHREKETO             |
+|    SOSO                 |
++-------------------------+
+7 rows in set (0.00 sec)
+
+
+6. Get unique “DEPARTMENT”.
+mysql> select distinct Department from Employee;
++------------+
+| Department |
++------------+
+| Finance    |
+| IT         |
+| Banking    |
+| Insurance  |
++------------+
+4 rows in set (0.00 sec)
+
+
+7. Get the first 4 characters of “FIRST_NAME” column.
+mysql> select LEFT(First_name, 4) from Employee;
++---------------------+
+| LEFT(First_name, 4) |
++---------------------+
+|    B                |
+|    J                |
+|    P                |
+|    J                |
+|    M                |
+|    A                |
+|    Y                |
++---------------------+
+7 rows in set (0.01 sec)
+
+
+8. Get the position of the letter ‘h’ in ‘John’.
+mysql> select instr('John', 'h');
++--------------------+
+| instr('John', 'h') |
++--------------------+
+|                  3 |
++--------------------+
+1 row in set (0.00 sec)
+
+ OR
+
+mysql> select find_in_set('h', 'J,o,h,n');
++-----------------------------+
+| find_in_set('h', 'J,o,h,n') |
++-----------------------------+
+|                           3 |
++-----------------------------+
+1 row in set (0.00 sec)
+ 
+
+9. Get all values from the “FIRST_NAME” column after removing white space on the right.
+mysql> select RTRIM(First_name) from Employee;
++-------------------+
+| RTRIM(First_name) |
++-------------------+
+|    Bob            |
+|    Jerry          |
+|    Philip         |
+|    John           |
+|    Michael        |
+|    Alex           |
+|    Yohan          |
++-------------------+
+7 rows in set (0.01 sec)
+
+
+10. Get all values from the “FIRST_NAME” column after removing white space on the left.
+mysql> select LTRIM(First_name) from Employee;
++-------------------+
+| LTRIM(First_name) |
++-------------------+
+| Bob               |
+| Jerry             |
+| Philip            |
+| John              |
+| Michael           |
+| Alex              |
+| Yohan             |
++-------------------+
+7 rows in set (0.00 sec)
+
+
+11. Write the syntax to create the “employee” table.
+
+Syntax: create table if not exists table_name(column-1 datatype-1, column-2 datatype-2,  .... ,column-n  datatype-n);
+
+mysql> create table if not exists Employee(Employee_id int primary key, First_name varchar(15), Last_name varchar(15), Salary int, Joining_date date, Department varchar(15));
+Query OK, 0 rows affected, 1 warning (0.08 sec)
+

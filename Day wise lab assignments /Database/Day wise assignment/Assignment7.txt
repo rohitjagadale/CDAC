@@ -1,0 +1,531 @@
+Table Name:- Employee
+Empid EmpName   Department  ContactNo  EmailId 		 EmpHeadId
+101 	Isha 	E-101 		1234567890 isha@gmail.com     105
+102 	Priya 	E-104       1234567890 priya@yahoo.com    103
+103 	Neha 	E-101 		1234567890 neha@gmail.com 	  101
+104 	Rahul 	E-102 		1234567890 rahul@yahoo.com 	  105
+105   Abhishek 	E-101 		1234567890 abhishek@gmail.com 102
+
+Table :- EmpDept
+DeptId DeptName       Dept_off   DeptHead
+E-101  HR 		  	  Monday 		105
+E-102  Development 	  Tuesday 		101
+E-103  House Keeping  Saturday 		103
+E-104  Sales 		  Sunday 		104
+E-105  Purchage 	  Tuesday 		104
+
+Table :- EmpSalary
+EmpId Salary   IsPermanent
+101 	2000 	Yes
+102 	10000 	Yes
+103 	5000 	No
+104 	1900 	Yes
+105 	2300 	Yes
+
+Table :- Project
+ProjectId Duration
+p-1 		23
+p-2 		15
+p-3 		45
+p-4 		2
+p-5 		30
+
+Table :- Country
+cid cname
+c-1 India
+c-2 USA
+c-3 China
+c-4 Pakistan
+c-5 Russia
+
+Table :- ClientTable
+ClientId ClientName   cid
+cl-1 	 ABC Group 	  c-1
+cl-2 	 PQR 		  c-1
+cl-3 	 XYZ 		  c-2
+cl-4 	 tech altum   c-3
+cl-5 	 mnp 		  c-5
+
+Table :- EmpProject
+EmpId   ProjectId   ClientID    StartYear   EndYear
+101 	p-1 		Cl-1 		2010 		2010
+102 	p-2 		Cl-2 		2010 		2012
+103 	p-1 		Cl-3 		2013
+104 	p-4 		Cl-1 		2014 		2015
+105 	p-4 		Cl-5 		2015
+
+1. Select the detail of the employee whose name start with P.
+mysql> select *  from Employee where EmpName like "P%";
++-------+---------+------------+------------+-----------------+-----------+
+| Empid | EmpName | Department | ContactNo  | EmailId         | EmpHeadId |
++-------+---------+------------+------------+-----------------+-----------+
+|   102 | Priya   | E-104      | 1234567890 | priya@yahoo.com |       103 |
++-------+---------+------------+------------+-----------------+-----------+
+1 row in set (0.00 sec)
+
+
+2. How many permanent candidate take salary more than 5000.
+mysql> select COUNT(*) from EmpSalary where Salary > 5000 and IsPermanent =
+'Yes';
++----------+
+| COUNT(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+
+3. Select the detail of employee whose emailId is in gmail.
+mysql> select * from Employee where EmailId like '%@gmail.com';
++-------+----------+------------+------------+--------------------+-----------+
+| Empid | EmpName  | Department | ContactNo  | EmailId            | EmpHeadId |
++-------+----------+------------+------------+--------------------+-----------+
+|   101 | Isha     | E-101      | 1234567890 | isha@gmail.com     |       105 |
+|   103 | Neha     | E-101      | 1234567890 | neha@gmail.com     |       101 |
+|   105 | Abhishek | E-101      | 1234567890 | abhishek@gmail.com |       102 |
++-------+----------+------------+------------+--------------------+-----------+
+3 rows in set (0.00 sec)
+
+
+4. Select the details of the employee who work either for department E-104 or E-102.
+mysql> select * from Employee where Department = 'E-104' or Department = 'E-102';
++-------+---------+------------+------------+-----------------+-----------+
+| Empid | EmpName | Department | ContactNo  | EmailId         | EmpHeadId |
++-------+---------+------------+------------+-----------------+-----------+
+|   102 | Priya   | E-104      | 1234567890 | priya@yahoo.com |       103 |
+|   104 | Rahul   | E-102      | 1234567890 | rahul@yahoo.com |       105 |
++-------+---------+------------+------------+-----------------+-----------+
+2 rows in set (0.00 sec)
+
+
+5. What is the department name for DeptID E-102?
+mysql> select DeptName from EmpDept where DeptId = 'E-102';
++-------------+
+| DeptName    |
++-------------+
+| Development |
++-------------+
+1 row in set (0.01 sec)
+
+
+6. What is total salary that is paid to permanent employees?
+mysql> select SUM(Salary) as 'Total Salary' from EmpSalary where IsPermanent
+ = 'Yes';
++--------------+
+| Total Salary |
++--------------+
+|        16200 |
++--------------+
+1 row in set (0.00 sec)
+
+
+7. List name of all employees whose name ends with a.
+mysql> select EmpName from Employee where EmpName like '%a';
++---------+
+| EmpName |
++---------+
+| Isha    |
+| Priya   |
+| Neha    |
++---------+
+3 rows in set (0.00 sec)
+
+
+8. List the number of department of employees in each project.
+
+9. How many project started in year 2010.
+mysql> select COUNT(ProjectId) as "Number of Project" from EmpProject where
+StartYear = 2010;
++-------------------+
+| Number of Project |
++-------------------+
+|                 2 |
++-------------------+
+1 row in set (0.00 sec)
+
+
+10. How many project started and finished in the same year.
+mysql> select COUNT(ProjectId) as "Project" from EmpProject where StartYear= EndYear;
++---------+
+| Project |
++---------+
+|       1 |
++---------+
+1 row in set (0.00 sec)
+
+
+11. Select the name of the employee whose name's 3rd charactor is 'h'.
+mysql> select EmpName from Employee where EmpName like '__h%';
++----------+
+| EmpName  |
++----------+
+| Isha     |
+| Neha     |
+| Rahul    |
+| Abhishek |
++----------+
+4 rows in set (0.00 sec)
+
+
+12. Select the department name of the company which is assigned to the employee whose employee id is grater 103.
+mysql> select DeptName from EmpDept where DeptId IN (select Department from
+Employee where Empid > 103);
++-------------+
+| DeptName    |
++-------------+
+| Development |
+| HR          |
++-------------+
+2 rows in set (0.00 sec)
+
+
+13. Select the name of the employee who is working under Abhishek.
+mysql> select EmpName from Employee where EmpHeadId = (select Empid from Employee where EmpName = 'Abhishek');
++---------+
+| EmpName |
++---------+
+| Isha    |
+| Rahul   |
++---------+
+2 rows in set (0.00 sec)
+
+
+14. Select the name of the employee who is department head of HR.
+mysql> select EmpName from Employee where Empid = (select DeptHead from EmpDept where DeptName ='HR');
++----------+
+| EmpName  |
++----------+
+| Abhishek |
++----------+
+1 row in set (0.00 sec)
+
+
+15. Select the name of the employee head who is permanent.
+mysql> select EmpName from Employee where Empid IN (select Empid from EmpSalary where IsPermanent = 'Yes') and Empid in (select EmpHeadId from Employee);
++----------+
+| EmpName  |
++----------+
+| Abhishek |
+| Isha     |
+| Priya    |
++----------+
+3 rows in set (0.01 sec)
+
+
+16. Select the name and email of the Dept Head who is not Permanent.
+mysql> select EmpName, EmailId from Employee where Empid IN (select Empid fr
+om EmpSalary where IsPermanent = 'No') and Empid in (select EmpHeadId from Employee);
++---------+----------------+
+| EmpName | EmailId        |
++---------+----------------+
+| Neha    | neha@gmail.com |
++---------+----------------+
+1 row in set (0.00 sec)
+
+
+17. Select the employee whose department off is monday
+mysql> select * from Employee where Department IN (select DeptId from EmpDept where Dept_off = 'Monday');
++-------+----------+------------+------------+--------------------+-----------+
+| Empid | EmpName  | Department | ContactNo  | EmailId            | EmpHeadId |
++-------+----------+------------+------------+--------------------+-----------+
+|   101 | Isha     | E-101      | 1234567890 | isha@gmail.com     |       105 |
+|   103 | Neha     | E-101      | 1234567890 | neha@gmail.com     |       101 |
+|   105 | Abhishek | E-101      | 1234567890 | abhishek@gmail.com |       102 |
++-------+----------+------------+------------+--------------------+-----------+
+3 rows in set (0.00 sec)
+
+
+18. Select the indian clients details.
+mysql> select * from ClientTable where cid IN (select cid from Country where cname = 'India');
++----------+------------+------+
+| ClientId | ClientName | cid  |
++----------+------------+------+
+| cl-1     | ABC Group  | c-1  |
+| cl-2     | PQR        | c-1  |
++----------+------------+------+
+2 rows in set (0.01 sec)
+
+
+19. Select the details of all employee working in development department.
+mysql> select * from Employee where Department IN (select DeptId from EmpDep
+t where DeptName = 'Development');
++-------+---------+------------+------------+-----------------+-----------+
+| Empid | EmpName | Department | ContactNo  | EmailId         | EmpHeadId |
++-------+---------+------------+------------+-----------------+-----------+
+|   104 | Rahul   | E-102      | 1234567890 | rahul@yahoo.com |       105 |
++-------+---------+------------+------------+-----------------+-----------+
+1 row in set (0.00 sec)
+
+
+20. Create a procedure to calculate the average salaries of employees.
+mysql> create procedure if not exists average_sal()
+    -> begin
+    -> select AVG(Salary) as "Average Salary" from EmpSalary;
+    -> end $$
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> delimiter ;
+mysql> call average_sal();
++----------------+
+| Average Salary |
++----------------+
+|      4240.0000 |
++----------------+
+1 row in set (0.02 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+
+21. Join first two tables using inner join.
+mysql> select * from Employee e, EmpDept d where e.Department = d.DeptId;
++-------+----------+------------+------------+--------------------+-----------+--------+-------------+----------+----------+
+| Empid | EmpName  | Department | ContactNo  | EmailId            | EmpHeadId | DeptId | DeptName    | Dept_off | DeptHead |
++-------+----------+------------+------------+--------------------+-----------+--------+-------------+----------+----------+
+|   101 | Isha     | E-101      | 1234567890 | isha@gmail.com     |       105 | E-101  | HR          | Monday   |      105 |
+|   102 | Priya    | E-104      | 1234567890 | priya@yahoo.com    |       103 | E-104  | Sales       | Sunday   |      104 |
+|   103 | Neha     | E-101      | 1234567890 | neha@gmail.com     |       101 | E-101  | HR          | Monday   |      105 |
+|   104 | Rahul    | E-102      | 1234567890 | rahul@yahoo.com    |       105 | E-102  | Development | Tuesday  |      101 |
+|   105 | Abhishek | E-101      | 1234567890 | abhishek@gmail.com |       102 | E-101  | HR          | Monday   |      105 |
++-------+----------+------------+------------+--------------------+-----------+--------+-------------+----------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select e.Empid, e.EmpName, e.ContactNo, e.EmailId, e.EmpHeadId, d.DeptId, d.DeptName, d.Dept_off, d.DeptHead from Employee e, EmpDept d where e.Department = d.D
+eptId;
++-------+----------+------------+--------------------+-----------+--------+-------------+----------+----------+
+| Empid | EmpName  | ContactNo  | EmailId            | EmpHeadId | DeptId | DeptName    | Dept_off | DeptHead |
++-------+----------+------------+--------------------+-----------+--------+-------------+----------+----------+
+|   101 | Isha     | 1234567890 | isha@gmail.com     |       105 | E-101  | HR          | Monday   |      105 |
+|   102 | Priya    | 1234567890 | priya@yahoo.com    |       103 | E-104  | Sales       | Sunday   |      104 |
+|   103 | Neha     | 1234567890 | neha@gmail.com     |       101 | E-101  | HR          | Monday   |      105 |
+|   104 | Rahul    | 1234567890 | rahul@yahoo.com    |       105 | E-102  | Development | Tuesday  |      101 |
+|   105 | Abhishek | 1234567890 | abhishek@gmail.com |       102 | E-101  | HR          | Monday   |      105 |
++-------+----------+------------+--------------------+-----------+--------+-------------+----------+----------+
+5 rows in set (0.00 sec)
+
+
+22. Create a copy of employee table, add three extra entries in it and find the union, difference and intersect.
+
+mysql> create table Employee_clone select * from Employee;
+Query OK, 5 rows affected (0.29 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+mysql> select * from Employee_clone;
++-------+----------+------------+------------+--------------------+-----------+
+| Empid | EmpName  | Department | ContactNo  | EmailId            | EmpHeadId |
++-------+----------+------------+------------+--------------------+-----------+
+|   101 | Isha     | E-101      | 1234567890 | isha@gmail.com     |       105 |
+|   102 | Priya    | E-104      | 1234567890 | priya@yahoo.com    |       103 |
+|   103 | Neha     | E-101      | 1234567890 | neha@gmail.com     |       101 |
+|   104 | Rahul    | E-102      | 1234567890 | rahul@yahoo.com    |       105 |
+|   105 | Abhishek | E-101      | 1234567890 | abhishek@gmail.com |       102 |
++-------+----------+------------+------------+--------------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> insert into Employee_clone values(106, 'Krupa', 'E-102', 8126317888, 'krupa@gmail.com', 105);
+Query OK, 1 row affected (0.02 sec)
+mysql> insert into Employee_clone values(107, 'Kavya', 'E-101', 9827898777, 'kavya@gmail.com', 102);
+Query OK, 1 row affected (0.02 sec)
+mysql> insert into Employee_clone values(108, 'Mihir', 'E-104', 8988856789, 'mihir@gmail.com', 102);
+Query OK, 1 row affected (0.02 sec)
+
+Union:
+mysql> select * from Employee UNION select * from Employee_clone;
++-------+----------+------------+------------+--------------------+-----------+
+| Empid | EmpName  | Department | ContactNo  | EmailId            | EmpHeadId |
++-------+----------+------------+------------+--------------------+-----------+
+|   101 | Isha     | E-101      | 1234567890 | isha@gmail.com     |       105 |
+|   102 | Priya    | E-104      | 1234567890 | priya@yahoo.com    |       103 |
+|   103 | Neha     | E-101      | 1234567890 | neha@gmail.com     |       101 |
+|   104 | Rahul    | E-102      | 1234567890 | rahul@yahoo.com    |       105 |
+|   105 | Abhishek | E-101      | 1234567890 | abhishek@gmail.com |       102 |
+|   106 | Krupa    | E-102      | 8126317888 | krupa@gmail.com    |       105 |
+|   107 | Kavya    | E-101      | 9827898777 | kavya@gmail.com    |       102 |
+|   108 | Mihir    | E-104      | 8988856789 | mihir@gmail.com    |       102 |
++-------+----------+------------+------------+--------------------+-----------+
+8 rows in set (0.00 sec)
+
+Difference: 
+mysql> select * from Employee_clone EXCEPT select * from Employee;
++-------+---------+------------+------------+-----------------+-----------+
+| Empid | EmpName | Department | ContactNo  | EmailId         | EmpHeadId |
++-------+---------+------------+------------+-----------------+-----------+
+|   106 | Krupa   | E-102      | 8126317888 | krupa@gmail.com |       105 |
+|   107 | Kavya   | E-101      | 9827898777 | kavya@gmail.com |       102 |
+|   108 | Mihir   | E-104      | 8988856789 | mihir@gmail.com |       102 |
++-------+---------+------------+------------+-----------------+-----------+
+3 rows in set (0.00 sec)
+
+It can also be achieved using NOT IN and subquery.
+mysql> select * from Employee_clone where Empid NOT IN (select Empid from Employee);
++-------+---------+------------+------------+-----------------+-----------+
+| Empid | EmpName | Department | ContactNo  | EmailId         | EmpHeadId |
++-------+---------+------------+------------+-----------------+-----------+
+|   106 | Krupa   | E-102      | 8126317888 | krupa@gmail.com |       105 |
+|   107 | Kavya   | E-101      | 9827898777 | kavya@gmail.com |       102 |
+|   108 | Mihir   | E-104      | 8988856789 | mihir@gmail.com |       102 |
++-------+---------+------------+------------+-----------------+-----------+
+3 rows in set (0.00 sec)
+
+Intersect:
+mysql> select * from Employee INTERSECT select * from Employee_clone;
++-------+----------+------------+------------+--------------------+-----------+
+| Empid | EmpName  | Department | ContactNo  | EmailId            | EmpHeadId |
++-------+----------+------------+------------+--------------------+-----------+
+|   101 | Isha     | E-101      | 1234567890 | isha@gmail.com     |       105 |
+|   102 | Priya    | E-104      | 1234567890 | priya@yahoo.com    |       103 |
+|   103 | Neha     | E-101      | 1234567890 | neha@gmail.com     |       101 |
+|   104 | Rahul    | E-102      | 1234567890 | rahul@yahoo.com    |       105 |
+|   105 | Abhishek | E-101      | 1234567890 | abhishek@gmail.com |       102 |
++-------+----------+------------+------------+--------------------+-----------+
+5 rows in set (0.00 sec)
+
+
+23. Create a procedure to pass employee id as input and generate his id, salary, contact number and department name as output.
+mysql> delimiter $$
+mysql> create procedure if not exists getEmpData(IN eid int)
+    -> begin
+    -> select e.Empid, es.Salary, e.ContactNo, d.DeptName from Employee e, EmpSalary es, EmpDept d where eid = e.Empid and eid = es.Empid and d.DeptId = (select Employee.Department from Employee where eid = Employee.Empid);
+    -> end $$
+Query OK, 0 rows affected (0.51 sec)
+
+mysql> delimiter ;
+mysql> call getEmpData(101);
++-------+--------+------------+----------+
+| Empid | Salary | ContactNo  | DeptName |
++-------+--------+------------+----------+
+|   101 |   2000 | 1234567890 | HR       |
++-------+--------+------------+----------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+
+24. Create a view for the data retrieved client name, project id, start and end year.
+mysql> create or replace view viewProjectData 
+    -> as select ct.ClientName, ep.ProjectId, ep.StartYear, ep.EndYear from ClientTable ct, EmpProject ep where ct.ClientId = ep.ClientId;
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> select * from viewProjectData;
++------------+-----------+-----------+---------+
+| ClientName | ProjectId | StartYear | EndYear |
++------------+-----------+-----------+---------+
+| ABC Group  | p-1       |      2010 |    2010 |
+| PQR        | p-2       |      2010 |    2012 |
+| XYZ        | p-1       |      2013 |    NULL |
+| ABC Group  | p-4       |      2014 |    2015 |
+| mnp        | p-4       |      2015 |    NULL |
++------------+-----------+-----------+---------+
+5 rows in set (0.01 sec)
+
+
+25. Calculate average salary of permanent employees.
+mysql> select AVG(Salary) from EmpSalary where IsPermanent = 'Yes';
++-------------+
+| AVG(Salary) |
++-------------+
+|   4050.0000 |
++-------------+
+1 row in set (0.00 sec)
+
+
+26. Create a function to print department off when department name is given as input.
+mysql> delimiter $
+mysql> create function getDept(dept varchar(100))
+    -> returns varchar(10)
+    -> deterministic
+    -> begin
+    -> declare deptoff varchar(10);
+    -> select Dept_off into deptoff from EmpDept where DeptName = dept;
+    -> return deptoff;
+    -> end $
+Query OK, 0 rows affected (0.33 sec)
+
+mysql> delimiter ;
+mysql> select getDept('Sales');
++------------------+
+| getDept('Sales') |
++------------------+
+| Sunday           |
++------------------+
+1 row in set (0.04 sec)
+
+
+27. Write a function to deduct the 10% TDS from employees salary. The selct statement should generate empid, salary after TDS, and department name on screen.
+
+
+
+
+
+
+28. Write a cursor to extract id, name, contact and email from first table and store it in another tenporary table.
+mysql> delimiter ##
+mysql> create procedure create_temp()
+    -> begin
+    -> declare done int default 1;
+    -> declare id int;
+    -> declare nm varchar(100);
+    -> declare no bigint;
+    -> declare eid varchar(100);
+    -> declare tcursor cursor for select Empid, EmpName, ContactNo, EmailId from Employee;
+    -> declare continue handler for not found set done = 0;
+    -> open tcursor;
+    ->  dorepeat: loop
+    ->   fetch tcursor into id, nm, no, eid;
+    ->    if done = 0 then
+    ->   leave dorepeat;
+    ->    end if;
+    ->   insert into temp values(id, nm, no, eid);
+    ->   iterate dorepeat;
+    ->  end loop;
+    -> close tcursor;
+    -> end ##
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> delimiter ;
+mysql> call create_temp();
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> select * from temp;
++-------+----------+------------+--------------------+
+| empid | name     | contactno  | emailid            |
++-------+----------+------------+--------------------+
+|   101 | Isha     | 1234567890 | isha@gmail.com     |
+|   102 | Priya    | 1234567890 | priya@yahoo.com    |
+|   103 | Neha     | 1234567890 | neha@gmail.com     |
+|   104 | Rahul    | 1234567890 | rahul@yahoo.com    |
+|   105 | Abhishek | 1234567890 | abhishek@gmail.com |
++-------+----------+------------+--------------------+
+5 rows in set (0.00 sec)
+
+
+29. Create a trigger on first table to check that user inserted dept head id between 101 and 105 or not. If he doesnt enter the same, make dept head id as 100.
+mysql> delimiter $$
+mysql> create trigger trg_before_insert
+    -> before insert on Employee for each row
+    -> begin
+    -> if new.EmpHeadId > 105 or new.EmpHeadId < 101 then
+    ->   set new.EmpHeadId = 100;
+    -> end if;
+    -> end $$
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> delimiter ;
+mysql> insert into Employee values(106, 'Krupa','E-102',1234567890,'krupa@gmail.com',109);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from Employee;
++-------+----------+------------+------------+--------------------+-----------+
+| Empid | EmpName  | Department | ContactNo  | EmailId            | EmpHeadId |
++-------+----------+------------+------------+--------------------+-----------+
+|   101 | Isha     | E-101      | 1234567890 | isha@gmail.com     |       105 |
+|   102 | Priya    | E-104      | 1234567890 | priya@yahoo.com    |       103 |
+|   103 | Neha     | E-101      | 1234567890 | neha@gmail.com     |       101 |
+|   104 | Rahul    | E-102      | 1234567890 | rahul@yahoo.com    |       105 |
+|   105 | Abhishek | E-101      | 1234567890 | abhishek@gmail.com |       102 |
+|   106 | Krupa    | E-102      | 1234567890 | krupa@gmail.com    |       100 |
++-------+----------+------------+------------+--------------------+-----------+
+6 rows in set (0.00 sec)
+
+
+30. Create a trigger to create the log for updation done on first two tables. The log table will contain the changes made by user on both of these tables.
+
+
