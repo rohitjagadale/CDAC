@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Voter Registration Form</title>
+    <link href="admission_form.css">
+  </head>
+  <body>
+    <form action="processForm" method="post">
+      <table style="background-color: lightgrey; margin: auto">
+        <tr>
+          <td>Enter First Name</td>
+          <td><input type="text" name="fname" /></td>
+        </tr>
+        <tr>
+          <td>Enter Last Name</td>
+          <td><input type="text" name="lname" /></td>
+        </tr>
+        <tr>
+          <td>Enter Score</td>
+          <td><input type="number" name="score" min="0" max="100" /></td>
+        </tr>
+        <tr>
+          <td>Enter CourseName</td>
+          <td><input type="text" name="course" /></td>
+        </tr>
+
+        <tr>
+          <td><input type="submit" value="Register" /></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

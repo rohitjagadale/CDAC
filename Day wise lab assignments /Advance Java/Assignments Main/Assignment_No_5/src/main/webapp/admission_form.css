@@ -1,0 +1,13 @@
+@charset "ISO-8859-1";
+.button{
+	background-color: gray;
+	color: black;
+	border: 2px solid transparent;
+}
+.button:hover{
+	border: 2px solid black;
+	color: white;
+}
+label{
+	font-family: Arial;
+}
