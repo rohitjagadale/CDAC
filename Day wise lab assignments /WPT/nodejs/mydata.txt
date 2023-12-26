@@ -1,0 +1,7 @@
+Inside mydata.txt file
+Created by Krupa Thumar
+Date is 25/12/2023
+Time is 9:47 am
+Have a nice day
+See you soon
+Bye Bye

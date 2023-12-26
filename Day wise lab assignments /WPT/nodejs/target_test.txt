@@ -1,0 +1,23 @@
+exports.subtract=function(x, y){
+  return x - y;
+}
+
+exports.multiply=function(x, y){
+  return x * y;
+}
+
+exports.divide=function(x, y){
+  return x / y;
+}
+
+exports.addition=function(x, y){
+  return x + y;
+}
+
+exports.addition=function(x, y){
+  return x + y;
+}
+
+exports.addition=function(x, y){
+  return x + y;
+}
