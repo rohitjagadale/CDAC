@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimum no</title>
+    <script src = "../jQuery.js"></script>
+    <script>
+        function findMin(arr){
+            var min = parseInt(arr[0]);
+            for(var no of arr){
+                if(parseInt(no) < min)
+                    min = parseInt(no);
+            }
+            return min;
+        }
+
+        $(document).ready(()=>{
+            $('#btn').click(()=>{
+                var numArr = $("#numArr").val();
+                console.log(numArr);
+                var arr = numArr.split(",");
+                var minNo = findMin(arr);
+                console.log(minNo);
+                $("#result").html("Minimum no is "+minNo);
+            })
+        })
+    </script>
+</head>
+<body>
+    <form>
+        <label for="numArr">Enter comma seperated numbers</label>
+        <input type = "text" name="numArr" id="numArr"/><br/><br/>
+        <button type="button" name="btn" id="btn">Click Me</button>
+        <div id="result"></div>
+    </form>
+</body>
+</html>

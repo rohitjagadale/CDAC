@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Message</title>
+</head>
+<body>
+    
+    <p id="message"></p>
+    <script>
+        var no;
+        do{
+            no = parseInt(prompt("Enter number of times to print msg: "));
+        }while(no < 0);
+        var msg = prompt("Enter msg");
+        for(let i = 1; i <= no; i++){
+            document.getElementById("message").innerHTML += "<br/>" +msg;
+        }
+    </script>
+</body>
+</html>

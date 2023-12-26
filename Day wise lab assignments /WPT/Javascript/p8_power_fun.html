@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>power x ^ y</title>
+    <script src="../jQuery.js"></script>
+    <script>
+        function pow(){
+            var no = arguments[0];
+            var mul = 1;
+            for(var i = 1; i <= arguments[1]; i++){
+                mul *= no;
+            }
+            return mul;
+        }
+
+        $(document).ready(()=>{
+            $("#btn").click(()=>{
+                base = $('#base').val();
+                power = $('#power').val();
+                var res = pow(base, power);
+                $('#result').html(base + " ^ " + power + " = " + res);
+            })
+        })
+    </script>
+</head>
+<body>
+    <form>
+        <label for="base">Enter Base</label>
+        <input type = "number" name = "base" id ="base"/><br/>
+        <label for="power">Enter Power</label>
+        <input type = "number" name = "power" id ="power"/><br/>
+        <button type = "button" name = "btn" id = "btn">Calculate Power</button>
+        <div id = "result"></div>
+    </form>
+
+</body>
+</html>

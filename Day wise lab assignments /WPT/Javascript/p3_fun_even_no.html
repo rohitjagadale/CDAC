@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even Numbers</title>
+
+</head>
+
+<body>
+    <span id="print"></span>
+    <script>
+        var n = parseInt(prompt("Enter no: "));
+        print_even_no(n);
+        function print_even_no(n) {
+            var i = 1;
+            while (i <= n) {
+                if (i % 2 == 0) {
+                    document.getElementById("print").innerHTML += i + ", ";
+                }
+                i++;
+            }
+        }
+    </script>
+</body>
+
+</html>

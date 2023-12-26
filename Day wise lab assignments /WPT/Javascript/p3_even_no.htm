@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Even numbers</title>
+</head>
+<body>
+    <!--list all even no upto no entered by user using while loop-->
+    <p id="evenData">Even Numbers are: &nbsp;</p>
+    <script>        
+        var start = parseInt(prompt("Enter start value"));
+        var end = parseInt(prompt("Enter end value"));
+        var i = start;
+        while(i <= end){
+            if(i % 2 == 0)
+                document.getElementById("evenData").innerHTML += i + ", " ; 
+            i++;
+        }
+    </script>
+</body>
+</html>

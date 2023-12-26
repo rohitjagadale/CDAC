@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimum No</title>
+    <script>
+        function minNo(){
+            var min = arguments[0];
+            for(var no of arguments){
+                if(no < min){
+                    min = no;
+                }
+            }
+            console.log("Minimum no is: " + min);
+        }
+        minNo(1,2,3,4,5);
+        minNo(56,8,4,23,9,45,20);
+        minNo(40,65,34,67,35,89);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

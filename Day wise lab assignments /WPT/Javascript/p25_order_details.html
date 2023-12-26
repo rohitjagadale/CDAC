@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Order</title>
+    <script src="../jQuery.js"></script>
+    <script src = "order.js"></script>
+    <style type="text/css">
+        body{
+            background-color: lightcyan;
+        }
+        table{
+            background-color: aqua;
+            border: 2px solid rgb(59, 25, 128);
+            border-radius: 10px;
+            width: 800px;
+            height: 300px;
+            margin-left: 200px;
+            margin-top: 100px;
+            /*padding-left: 5px;*/
+            font-size: large;
+        }
+        table tr td:last-child{
+            color: red;
+        }
+        button{
+            margin-left: 120px;
+            border-radius: 5px;
+            border-color: cadetblue;
+            width: 150px;
+            height: 30px;
+            font-size: medium;
+            background-color: azure;
+        }
+        button:hover{
+            background-color: cadetblue;
+            color: aqua;
+        }
+        input{
+            border: 1px solid rgb(10, 10, 101);
+            height: 24px;
+            width: 200px;
+            border-radius: 6px;
+        }
+        input:hover{
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <table>
+    <form>
+        <tr>
+            <td>
+                <label for = "orderId">Order ID:</label>
+            </td>
+            <td>
+                <input type = "number" name="orderId" id = "orderId" autofocus required/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for = "custName">Customer Name:</label>
+            </td>
+            <td>
+                <input type = "text" name="custName" id = "custName" required/>
+            </td>
+            <td id="nmErr">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for = "billingDate">Enter Billing Date:</label>
+            </td>
+            <td>
+                <input type = "date" name="billingDate" id = "billingDate" required/>
+            </td>
+            <td id="billErr">
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for = "shipingDate">Enter Shiping Date:</label>
+            </td>
+            <td>
+                <input type = "date" name="shipingDate" id = "shipingDate" required/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for = "orderTotal">Order Total:</label>
+            </td>
+            <td>
+                <input type = "text" name="orderTotal" id = "orderTotal" required/>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <button type="button" name="btn" id = "btn">Display</button>
+            </td>
+        </tr>
+    </form>
+    </table>
+</body>
+</html>

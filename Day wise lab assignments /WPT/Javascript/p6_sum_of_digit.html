@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum of Digits</title>
+    <script>
+        function findSumOfDigits() {
+            let no = parseInt(document.getElementById("num").value);
+            console.log("no: ", no);
+            if(no > 0){
+                let sum = 0;
+                let digit = 0;
+                while(no !== 0){
+                    digit = no % 10;
+                    sum += digit;
+                    no = parseInt( no / 10);
+                }
+              
+                document.getElementById("res").value = sum;
+                return true;
+            }
+            document.getElementById("res").value = 0;
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <form method="get"  onsubmit="return findSumOfDigits()" >
+        <label for="num">Enter number: </label>&nbsp;
+        <input type="number" name="num" id="num" required/><br>
+        <label for="res">Result is: </label>&nbsp;
+        <input type="text" name="res" id="res" readonly/><br>
+        <button type ="submit" name="btn" id="btn" value="btn" >Sum of Digits</button>
+    </form>
+</body>
+</html>

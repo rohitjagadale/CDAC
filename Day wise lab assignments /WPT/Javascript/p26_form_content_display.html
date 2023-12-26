@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Object Using Form</title>
+    <script src="../jQuery.js"></script>
+    <script src="p26_form.js"></script>
+    
+</head>
+<body>
+    <table>
+        <form method="get" action="">
+            <tr>
+                <td>
+                    <label for = "name">Name:</label>
+                </td>
+                <td>
+                    <input type = "text" name="name" id = "name" pattern = "[a-zA-Z]{3,10}" autofocus required/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for = "birthDate">Birth Date:</label>
+                </td>
+                <td>
+                    <select id="month" required></select>&nbsp;
+                    <select id="date" required></select>&nbsp;
+                    <select id="year" required></select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for = "email">Email Address:</label>
+                </td>
+                <td>
+                    <input type = "email" name="email" id = "email" required/>
+                </td>
+                <td>(Use format name@company.com)</td>
+            </tr>
+            <tr>
+                <td>    
+                    <label for = "gender">Gender:</label>
+                </td>
+                <td>
+                    <input type = "radio" name="gender" id = "female" value="female"/><label>Female</label><br/>
+                    <input type = "radio" name="gender" id = "male" value="male"/><label>Male</label>
+                    
+                </td>
+                <td id ="genderErr">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for = "luckyNo">Lucky Number:</label>
+                </td>
+                <td>
+                    <input type = "number" name="luckyNo" id = "luckyNo" maxlength="4" required/>
+                </td>
+                <td>(A number between 1 and 100)</td>
+            </tr>
+            <tr>
+                <td>
+                    <label for = "favFood">Favourite Food:</label>
+                </td>
+                <td>
+                    <input type = "checkbox" name="favFood" id = "Pizza"/><label>Pizza</label><br/>
+                    <input type = "checkbox" name="favFood" id = "Pasta"/><label>Pasta</label><br/>
+                    <input type = "checkbox" name="favFood" id = "Chiense"/><label>Chiense</label><br/>
+                </td>
+                <td id="hobbyErr"></td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <button type="submit" name="btn" id = "btn">Send Data</button>
+                </td>
+            </tr>
+        </form>
+    </table>
+</body>
+</html>

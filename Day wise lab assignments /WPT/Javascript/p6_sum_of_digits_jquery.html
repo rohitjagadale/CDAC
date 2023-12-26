@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum of Digits</title>
+    <script src = "../jQuery.js"></script>
+    <script>
+        $(document).ready(()=>{
+            $('#btn').click(()=>{
+                var no = parseInt($('#num').val());
+                var sum = 0 , digit = 0;
+                while(no !== 0){
+                    digit = no % 10;
+                    sum += digit;
+                    no = parseInt(no / 10);
+
+                }
+                console.log(sum);
+                $('#res').val(sum);
+            })
+        })
+    </script>
+</head>
+<body>
+    <form>
+        <label for="num">Enter number: </label>&nbsp;
+        <input type="number" name="num" id="num" required/><br>
+        <label for="res">Result is: </label>&nbsp;
+        <input type="text" name="res" id="res" readonly/><br>
+        <button type ="button" name="btn" id="btn" value="btn" >Sum of Digits</button>
+    </form>
+</body>
+</html>

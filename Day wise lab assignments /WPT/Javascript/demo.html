@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Javascript</title>
+    <script>
+        function checknumber(no, err){
+            if(isNaN(no)){
+                console.log(err);
+                document.getElementById(err).innerHTML = "Enter a number";
+                return false;
+            }
+          //  document.getElementById("err").innerHTML = " ";
+            return true;
+        }
+        function check(){
+            debugger
+            var n1 = document.getElementById("num1").value;
+            var flag1 = checknumber(n1, "errn1");
+            console.log(flag1)
+         
+            var n2 = document.getElementById("num2").value
+            var flag2 = checknumber(n2, "errn2");
+            window.alert(Number(n1)+ Number(n2));
+            
+            return flag1 && flag2;
+        }
+    </script>
+
+</head>
+<body>
+    <form>
+        <table>
+            <tr>
+                <td><label for="num1">Number1</label></td>
+                <td><input type = "text" name = "num1" id = "num1"/><br/></td>
+                <td id = "errn1"></td>
+            </tr>
+            <tr>
+                <td><label for="num2">Number2</label></td>
+                <td><input type = "text" name = "num2" id = "num2"/><br/></td>
+                <td id = "errn2"></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <button type ="button" name = "btn" id = "btn" onclick="check()">Calculate</button><br/></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

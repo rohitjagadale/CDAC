@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <style>
+        form{
+            border: 2px blueviolet;
+        }
+        td{
+           padding: 0.2cm;
+        }
+        label{
+            display: block;
+            font-size: larger;
+        }
+        input[type=text],input[type=password]{
+            background-color: beige;
+            border-radius: 1mm;
+            width: 5cm;
+            height: 0.75cm;
+        }
+        input:focus{
+            background-color: aqua;
+        }
+        button{
+            color: black;
+            background-color: beige;
+            border-radius: 0.9cm;
+            border-width: 2 px;
+            width: 40%;
+            height: .75cm;
+            font-size: medium;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        button:hover{
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <table align = "center">
+        <form>
+            <tr>
+            <td><label>User Name</label></td>
+            <td><input type="text" name="uname" id="uname" pattern="^[a-zA-Z]{6,10}$" placeholder="Enter email id" required /><br /></td><!--empty tags -->
+            </tr>
+            <tr>
+            <td><label>Password</label></td>
+            <td><input type="password" name="pass" id="pass" pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$#&%^!*])[a-zA-Z\d@$#&%^!*]{8,}$" placeholder="Enter password" required /><br /></td>
+            <!--empty tags -->
+            </tr>
+            <tr>
+            <td colspan="2" align="center"><button type="submit" name="signin" id="sign in" value="signin" >Sign in</button>
+                <button type="reset" name="reset" id="reset" value="reset" >Clear</button>
+            </td>
+            </tr>
+        </form>
+    </table>
+</body>
+
+</html>

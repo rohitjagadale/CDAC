@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addition</title>
+</head>
+
+<body>
+    <!--Javascript can be added in body or head part 
+    It can be added multiple times also-->
+    <script>
+        var no1, no2, no3;
+        do {
+            no1 = parseInt(prompt("Enter number1: "));
+        } while (no1 < 0);
+        do {
+            no2 = parseInt(prompt("Enter number2: "));
+        } while (no2 < 0);
+        do {
+            no3 = parseInt(prompt("Enter number3: "));
+        } while (no3 < 0);
+        var max = no1;
+        if (no2 > max) {
+            max = no2;
+        }
+        else {
+            if (no3 > max) {
+                max = no3;
+            }
+        }
+        document.write(max + " is max");
+    </script>
+</body>
+
+</html>

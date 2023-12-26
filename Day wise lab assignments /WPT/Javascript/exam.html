@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic Operation</title>
+</head>
+
+<body>
+    <table>
+        <form>
+            <tr>
+                <td><label for="no1">Number1</label></td>
+                <td><input type="text" name="no1" id="no1" required /></td>
+            </tr>
+            <tr>
+                <td><label for="no2">Number2</label></td>
+                <td><input type="text" name="no2" id="no2" required /></td>
+            </tr>
+            <tr>
+                <td><button type="button" name="btn_mul" id="btn_mul" value="multiply"
+                        onclick="calculate(this.id)">Multiply</button></td>
+                <td><button type="button" name="btn_div" id="btn_div" value="divide"
+                        onClick="calculate(this.id)">Divide</button></td>
+            </tr>
+        </form>
+    </table>
+    
+    <p id="result">Result is: </p>
+
+    <script>
+        function calculate(button_id) {
+            var n1 = document.getElementById("no1").value;
+            var n2 = document.getElementById("no2").value;
+            var res = 1;
+            if(button_id == 'btn_mul'){
+                res= n1 * n2;
+            }
+            else
+                res = n1 / n2;
+            document.getElementById("result").innerHTML += res;
+        }
+    </script>
+</body>
+
+</html>
