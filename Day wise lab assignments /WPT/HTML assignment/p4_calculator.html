@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <script>
+        function calculate(op){
+            var n1 = parseInt(document.getElementById("num1").value);
+            var n2 = parseInt(document.getElementById("num2").value);
+            switch(op)
+            {
+                case "+":
+                        var res = n1 + n2;
+                        break;
+                case "-":
+                        res = n1 - n2;
+                        break;
+                case "*":
+                        res = n1 * n2;
+                        break;
+                case "/":
+                        res = n1 / n2;
+                        break;
+            }
+            document.getElementById("result").value = res;
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <label for="num1">Enter number 1</label>&nbsp;
+        <input type="number" name="num1" id="num1" required/><br/>
+        <label for="num2">Enter number 2</label>&nbsp;
+        <input type="number" name="num2" id="num2" required/><br/>
+        <label for="result">Result</label>&nbsp;
+        <input type="text" name="result" id="result"/><br/>
+        <button type="button" name="add" id="add" onclick="calculate('+')">+</button>
+        <button type="button" name="mul" id="mul" onclick="calculate('*')">*</button>
+        <button type="button" name="div" id="div" onclick="calculate('/')">/</button>
+        <button type="button" name="sub" id="sub" onclick="calculate('-')">-</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamilton Conference Center</title>
+    <style>
+        body{
+            margin: 5px;
+            padding: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 10px;
+        }
+        nav div{
+            align-items: left;
+        }
+        nav div ul{
+            list-style-type: none;
+            display: flex;
+            background-color: rgb(17, 143, 143);
+        }
+        nav div ul li{
+            padding: 1px 20px 1px 0px;
+        }
+        nav div ul a{
+            text-decoration: none;
+            color: white;
+            align-items: left;
+            font-size: 17px;
+        }
+        .routine{
+            width: 100%;
+            border-color: black;
+            border-spacing: 0px;
+            table-layout: fixed; 
+        }
+        main section pre{
+            font-size:14px ;
+        }
+        .tblhead{
+            background-color: rgb(17, 143, 143);
+            color: white;            
+        }
+        .row{
+            height: 1cm;
+            vertical-align:top;
+        }
+        .column{
+            width: 1cm;
+            background-color: beige;
+        }
+        .cap{
+            border: 3px solid palevioletred;
+            width: 40%;
+            position: relative;
+            left: 45%;
+            box-shadow: 2px 2px 2px lightcoral;
+            border-radius: 12px;
+        }
+        .ref{
+            width: 40%;
+            display: inline;
+            float: left;
+
+        }
+        footer {
+            background-color:rgb(17, 143, 143);
+            color: white;
+            font-family: sans-serif;
+            text-align: center;       
+        }
+       
+    </style>
+</head>
+<body>
+    <header>
+        <div style = "float: left; "><img src="./images/dome1.jpg" alt="Image" height="60px"></div>
+        <div style = "color:rgb(17, 143, 143) ; font-size: 70px; ">Hamilton<br/> Conference Center</div>
+    </header>
+    <nav>
+        <div>
+        <ul>
+            <li><a target="_blank" href="homepage.html">Home Page</a></li>
+            <li><a href="reservation.html">Reservations</a></li>
+            <li><a href="facilities.html">Facilities</a></li>
+            <li><a href="virtualtour.html">Virtual Tour</a></li>
+            <li><a href="staff.html">Staff</a></li>
+            <li><a href="calofevents.html">Calendar of Events</a></li>
+            <li><a href="contact.html">Contact Info</a></li>
+            <li><a href="directions.html">Directions</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+        </ul>
+        </div>
+    </nav>
+    <main>
+        <section>
+            <pre align=" right">Reservations for conference rooms
+                 Tuesday, April 11
+            </pre>
+        </section>
+        <section>
+            <table class ="routine" border="1"> <!-- 19, 9 rows-->
+                <tr class="tblhead">
+                    <th></th>
+                    <th colspan="8">Morning</th>
+                    <th colspan="2">Noon</th>
+                    <th colspan="8">Afternoon</th>
+                </tr>
+                <tr class="tblhead">
+                    <th>Room</th>
+                    <th>8:00</th>
+                    <th>8:30</th>
+                    <th>9:00</th>
+                    <th>9:30</th>
+                    <th>10:00</th>
+                    <th>10:30</th>
+                    <th>11:00</th>
+                    <th>11:30</th>
+                    <th>12:00</th>
+                    <th>12:30</th>
+                    <th>1:00</th>
+                    <th>1:30</th>
+                    <th>2:00</th>
+                    <th>2:30</th>
+                    <th>3:00</th>
+                    <th>3:30</th>
+                    <th>4:00</th>
+                    <th>4:30</th>
+
+                </tr>
+                <tr class = "row">
+                    <td class="column">Sunrise Room</td>
+                    <td colspan="4">Marriage Encounter</td>
+                    <td colspan="4"></td>
+                    <td colspan="2">Marriage Encounter Luncheon</td>
+                    <td colspan="4"></td>
+                    <td colspan="4">Marraige Encounter talks </td>
+                </tr>
+                <tr class = "row">
+                    <td class="column">Mountain View Room</td>
+                    <td colspan="2"> Breakfast Club of Ohio</td>
+                    <td colspan="4"></td>
+                    <td colspan="4">Ohio Conference of Librarians</td>
+                    <td colspan="2"></td>
+                    <td colspan="6">Ohio Book Resale Setup</td>
+
+                </tr>
+                <tr >
+                    <td class="column">Arbor Hall</td>
+                    <td colspan="8">Computer Expo Set Up</td>
+                    <td colspan="2"></td>
+                    <td colspan="8">Computer Expo Opening Session</td>                    
+                </tr>
+                <tr  class = "row">
+                    <td class="column">Mipchell Theater</td>
+                    <td colspan="14"></td>
+                    <td colspan="4">Youth Theater</td>
+                 </tr>
+                <tr  >
+                    <td class="column">Gold Room</td>
+                    <td colspan="2"></td>
+                    <td colspan="3">The Tompkins Group</td>
+                    <td colspan="3">Pearson Planning</td>
+                    <td colspan="4"></td>
+                    <td colspan="3">Mothers of Multiples</td>
+                    <td colspan="3">Teen Connection</td>
+                    
+                </tr>
+                <tr  class = "row">
+                     <td class="column">Blue Room</td>
+                     <td colspan="2"></td>
+                     <td colspan="3">Retirement Planning</td>
+                    <td colspan="3">The Senior Group</td>
+                    <td colspan="2">Senior Luncheon</td>
+                    <td colspan="5">Senior Classes</td>
+                    <td colspan="3">Tutoring</td>
+                </tr >                
+                <tr  class = "row">
+                    <td class="column">Green Room</td>
+                    <td colspan="2"></td>
+                    <td colspan="4">Drivers' Ed</td>
+                    <td colspan="5">Movie Club</td>
+                    <td colspan="4"></td>
+                    <td colspan="3">Tutoring</td>
+                </tr >
+
+            </table>
+        </section>
+        <section>
+            <div style="padding-top:20px">
+            <div class = "ref">To reserve a room , please contact Yancy Inwe at extension 388 or by e-mail at <a href="">yancyinwe@hconfcenter.org</a> Reserations should be at least 48 hours in advance.
+            Cancellatuions required 24hr notice. Room deposits will not be returned for cancellations with in 24hrs of the schedulled events. </div>
+            <div class = "cap">
+                <table>
+                    <tr>
+                        <td>Sunrise Room</td>
+                        <td>Maxmium Capacity: 80</td>
+                    </tr>
+                    <tr>
+                        <td>Mountain view Room</td>
+                        <td>Maxmium Capacity: 150</td>
+                    </tr>
+                    <tr>
+                        <td>Arbour Hall</td>
+                        <td>Maxmium Capacity: 190</td>
+                    </tr>
+                    <tr>
+                        <td>Mitchell Theater</td>
+                        <td>Maxmium Capacity: 120</td>
+                    </tr>
+                    <tr>
+                        <td>Gold Room</td>
+                        <td>Maxmium Capacity: 40</td>
+                    </tr>
+                    <tr>
+                        <td>Blue Room</td>
+                        <td>Maxmium Capacity: 30</td>
+                    </tr>
+                    <tr>
+                        <td>Green Room</td>
+                        <td>Maxmium Capacity: 55</td>
+                    </tr>
+            </table>
+        </div>
+    </div>
+        </section>
+    </main>
+    <footer>
+      <p>HAMILTON CONFERENCE CENTER &bull; 8711 WEST PARK LANE &bull; OH 45011 &bull; (513)555-7911</p> 
+    </footer>
+</body>
+</html>

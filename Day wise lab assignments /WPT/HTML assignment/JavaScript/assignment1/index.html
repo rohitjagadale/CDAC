@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,tr,td{
+            border: 2px solid;
+            border-collapse: collapse;
+            padding: 10px;
+            margin-top: 100px;
+        }
+    </style>
+    <script>
+        function calculate(){
+            var num1=document.getElementById("num1").value;
+            var num2=document.getElementById("num2").value;
+            var num3=document.getElementById("num3").value;
+            var gretest= num3 > (num1>num2 ? num1:num2) ? num3:((num1>num2) ? num1:num2);  ;
+          
+
+            document.getElementById("answer").innerHTML="Gretest Number is: "+gretest;
+        }
+    </script>
+</head>
+<body>
+    <div style="display: flex; justify-content: center; ">
+        <table>
+            <tr >
+                <td colspan="2" style="text-align: center;">    Gretest Number</td>
+            </tr>
+            <tr>
+                <td><label for="num1">Number 1</label></td>
+                <td><input type="number" name="num1" id="num1"></td>
+            </tr>
+            <tr>
+                <td><label for="num1">Number 2</label></td>
+                <td><input type="number" name="num2" id="num2"></td>
+            </tr>
+            <tr>
+                <td><label for="num3">Number 3</label></td>
+                <td><input type="number" name="num3" id="num3"></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button onclick="calculate()">Find Grestest Number</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" id="answer"><h2></h2></td>
+            </tr>
+        </table>
+    
+
+    </div>
+</body>
+</html>

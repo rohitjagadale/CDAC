@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table of given no</title>
+    <script>
+        function showTable(){
+            var no = parseInt(document.getElementById("num").value);
+            var res;
+            for(var i = 1; i <= 10; i++){
+                res = no * i;
+                console.log(res);
+                document.getElementById("shorResultDiv").innerHTML = res;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return showTable()">
+        <label for="num">Enter number: </label>
+        <input type = "number" name="num" id="num"/><br/>
+        <button type = "submit" name="btn" id="btn">Show Table</button>
+    </form>
+    <div id="shorResultDiv"></div>
+</body>
+</html>

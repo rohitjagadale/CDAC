@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td {
+          border: 1px solid;
+          border-collapse: collapse;
+          padding: 10px;
+          background-color: pink;
+        }
+        </style>
+</head>
+<body>
+    <div>
+        <table >
+            <form action="post">
+                <tr>
+                    <td><label for="name">Name</label></td>
+                    <td><input type="text" value="Name" autofocus required></td>
+                </tr>
+                <tr>
+                    <td><label for="EmployeeCode">Employee Code</label></td>
+                    <td><input type="number" name="EmployeeCode" value="EmployeeCode"  required></td>
+                </tr>
+                <tr>
+                    <td><label for="Department">Department</label></td>
+                    <div>
+                    <td><input type="radio" name="Department" value="Department">Admin
+                    <input type="radio" name="Department" value="Department">HR
+                    <input type="radio" name="Department" value="Department">Technical
+                    <input type="radio" name="Department" value="Department">Accounts</td>
+                </div>
+                </tr>
+                <tr>
+                    <td><label for="DateOfJoining">Date Of Joining</label></td>
+                    <td>
+                        <input type="date">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="Address">Address</label></td>
+                    <td><textarea name="Address" id="Address" ></textarea></td>
+
+                </tr>
+                <tr><td>
+                    <label for="">Training Program attended</label>
+                </td><td>
+                    <input type="checkbox"  name="Training" value="Training">HTML/DHTML
+                    <input  type="checkbox" name="Training" value="Training">JAVA
+                    <input  type="checkbox" value="Training" name="Training">Client/Server
+                    <input  type="checkbox" name="Training" value="Training">.NET
+                </td></tr>
+                <tr>
+                    <td><label for="">Training Program Need to attended</label></td><td>
+                        <input list="Programs" name="Program" id="Program">
+                        <datalist id="Programs">
+                          <option value="Javasript">
+                          <option value="JSTRUTS">
+                          <option value="HTML">
+                          <option value="CSS">
+                          
+                        </datalist>
+                </tr>
+                <tr><td><label for="">Send the Information at</label></td>
+                <td>
+                    <a href="mailto:empinfo@patni.com">empinfo@patni.com</a>
+                </td></tr>
+            </form>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<html>
+  <head>
+    <title>Internet Usage Survey</title>
+    <style>
+      #outer {
+        border: 2px solid blue;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+      #innerLeft {
+        border: 1px solid black;
+        margin-right: 20px;
+      }
+      #innerRight {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="outer">
+      <form>
+        <h3>Internet Usage Survey</h3>
+        <p>
+          This Survey is being conducted to help identify the Internet usage
+          patterns of our customers.<br />
+          Please take a few moments to complete and submit this short form.
+          Thank you for your co-operation.
+        </p>
+        <table>
+          <tr>
+            <td>
+              What type of Internet connection do you have?<br />(Select One)
+            </td>
+            <td>
+              <select size="4">
+                <option>Dial-up</option>
+                <option>DSL</option>
+                <option>High Speed Cable</option>
+                <option>Other</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td>What type of computer do you use most at home?</td>
+            <td>
+              <label><input type="radio" name="computerType" /> Desktoop</label
+              >&nbsp;&nbsp;
+              <label><input type="radio" name="computerType" />Laptop</label>
+            </td>
+          </tr>
+          <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              How would you describe your main reason for using the Internet?
+            </td>
+            <td>
+              <label
+                ><input type="radio" name="UsageReason" />To do work-related
+                activities</label
+              ><br />
+              <label
+                ><input type="radio" name="UsageReason" />To do school-related
+                activities</label
+              >
+              <br />
+              <label
+                ><input type="radio" name="UsageReason" />For entertainment
+                purposes </label
+              ><br />
+              <label
+                ><input type="radio" name="UsageReason" />Other activities </label
+              ><br />
+            </td>
+          </tr>
+          <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <div id="innerLeft">
+                <h5 style="margin-top: 1px; margin-bottom: 1px">
+                  Types of sites visited
+                </h5>
+                What type of websites do you visit most often?<br />Check all
+                that apply<br />
+                <label><input type="checkbox" />Self Improvement </label><br />
+                <label><input type="checkbox" />Entertainment</label><br />
+                <label><input type="checkbox" />News and Sports</label><br />
+                <label><input type="checkbox" />Reference</label><br />
+                <label><input type="checkbox" />Email</label><br />
+              </div>
+            </td>
+            <td>
+              <div id="innerRight">
+                <h5 style="margin-top: 1px; margin-bottom: 1px">
+                  Time spent using Internet
+                </h5>
+                During an average weekf, how long do you spend online?<br />Check
+                all that apply<br />
+                <label><input type="radio" name="time" />0-3 Hours </label
+                ><br />
+                <label><input type="radio" name="time" />4-6 Hours </label
+                ><br />
+                <label><input type="radio" name="time" />7-10 Hours </label
+                ><br />
+                <label><input type="radio" name="time" />11-14 Hours </label
+                ><br />
+                <label><input type="radio" name="time" />15+</label><br />
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              Please comment on your opinions concerning Internet privacy and
+              safety:<br />
+              <textarea cols="65" rows="4"></textarea>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="width: 700px">
+              First Name:
+              <input type="text" style="width: 400px" />
+            </td>
+            <td style="width: 600px">
+              Last Name:<input type="text" style="width: 400px" />
+            </td>
+          </tr>
+          <tr>
+            <td>Age: <input type="number" min="0" max="100" /></td>
+            <td>Zip Code: <input type="number" min="100000" max="999999" /></td>
+          </tr>
+          <tr>
+            <td align="right">
+              <button>Click to Submit</button>
+            </td>
+            <td>
+              <button type="reset">Clear Form</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </body>
+</html>
