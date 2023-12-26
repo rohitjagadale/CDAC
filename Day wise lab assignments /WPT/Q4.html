@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arithmetic Operation</title>
+    <!--input 2 numbers and an operand and display the result-->
+    <script>
+      function calculate() {
+        var a = Number(document.getElementById("num1").value);
+        var b = Number(document.getElementById("num2").value);
+        var op = document.getElementById("op").value;
+        var result = 0;
+        if (op === "+") {
+          result = a + b;
+        } else if (op === "-") {
+          result = a - b;
+        } else if (op === "*") {
+          result = a * b;
+        } else if (op === "/") {
+          result = a / b;
+        } else if (op === "%") {
+          result = a % b;
+        } else {
+          document.getElementById("output").innerHTML = "Invalid Input!!!";
+        }
+        document.getElementById("output").innerHTML = result;
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      Number 1 : <input type="number" name="num1" id="num1" /><br /><br />
+      Number 2 : <input type="number" name="num2" id="num2" /><br /><br />
+      Operator : <input type="text" name="op" id="op" /><br /><br />
+      <button type="button" name="calc" id="calc" onclick="calculate()">
+        Calculate
+      </button>
+    </form>
+    <br /><br />
+    Answer :
+    <div id="output"></div>
+  </body>
+</html>

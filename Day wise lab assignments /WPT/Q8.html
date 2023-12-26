@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function pow() {
+        var base = Number(document.getElementById("base").value);
+        var index = Number(document.getElementById("index").value);
+        var ans = 1;
+        for (var i = 0; i < index; i++) {
+          ans *= base;
+        }
+        document.getElementById("output").innerHTML =
+          "<h3>" + base + " <sup> " + index + "</sup> = " + ans + " </h3>";
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      Number: <input id="base" name="base" /><br /><br />
+      Index :
+      <input id="index" name="index" />
+      <button id="calc" name="calc" type="button" onclick="pow()">
+        Calculate Power
+      </button>
+    </form>
+    <div id="output"></div>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q1.Get max of three numbers</title>
+    <!--1. Write a program to accept three positive numbers and output the largest of them.-->
+    <script>
+      function getMax() {
+        var a = Number(document.getElementById("num1").value);
+        var b = Number(document.getElementById("num2").value);
+        var c = Number(document.getElementById("num3").value);
+        var max;
+        if (a > b && a > c) {
+          max = a;
+        } else if (b > c && b > a) {
+          max = b;
+        } else {
+          max = c;
+        }
+        document.getElementById("displayAnswer").innerHTML = max;
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      Number 1 : <input type="number" name="num1" id="num1" /><br /><br />
+      Number 2 : <input type="number" name="num2" id="num2" /><br /><br />
+      Number 3 : <input type="number" name="num3" id="num3" /><br /><br />
+      <button type="button" onclick="getMax()">Get Max</button>
+      <button type="reset">Reset</button>
+    </form>
+    Answer :
+    <div id="displayAnswer">
+      <br />
+    </div>
+  </body>
+</html>

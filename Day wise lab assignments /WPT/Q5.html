@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q.5 Table of N</title>
+    <script>
+      function generateTable() {
+        var str = "";
+        var n = Number(document.getElementById("num").value);
+        for (var i = 1; i <= 10; i++) {
+          str = str + "<br>" + "<h5>" + i * n + "</h5>";
+        }
+        document.getElementById("outputDiv").innerHTML = str;
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      Number : <input type="number" name="num" id="num" /> <br /><br />
+      <button type="button" onclick="generateTable()">Print Table</button>
+    </form>
+    Table:<br /><br />
+    <div id="outputDiv"></div>
+  </body>
+</html>

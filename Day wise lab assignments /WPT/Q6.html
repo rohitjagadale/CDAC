@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function calcDigSum() {
+        var num = document.getElementById("num");
+        var str = "Enter 5 digit number!!";
+        if (5 != num.length) {
+          document.getElementById("SumOutput").innerHTML = str;
+        } else {
+          let char = [5];
+
+          var sum = 0;
+          var tem = 0;
+          while (num >= 1) {
+            tem = num % 10;
+            sum = sum + tem;
+            num = num / 10;
+          }
+          sum = sum - (sum % 1);
+          var ans = "" + sum;
+          document.getElementById("SumOutput").innerHTML = ans;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      Enter a Five Digit Number :
+      <input id="num" type="number" name="num" />
+      <button type="button" onclick="calcDigSum()">Find Digit Sum</button>
+    </form>
+    <div id="SumOutput"></div>
+  </body>
+</html>

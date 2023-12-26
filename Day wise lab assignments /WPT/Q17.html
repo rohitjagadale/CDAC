@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function calculate(){
+            var area = "Area : ";
+            var circumference = "Circumference : ";
+            var rad = Number(document.getElementById("rad").value);
+            var ans = Math.PI*rad*rad;
+            ans = Math.round(ans*100)/100;
+            area = area+""+ans;
+            ans = 2*Math.PI*rad;
+            ans = Math.round(ans*100)/100;
+            circumference = circumference+""+ans;
+
+
+            document.getElementById("area").innerHTML=area;
+            document.getElementById("circ").innerHTML=circumference;
+        }
+    </script>
+</head>
+<body>
+    <form>
+        Enter Radius : <input type="number" name="rad" id="rad">
+        <button type="button" name="btn" id="disp" onclick="calculate()">Display</button>
+    </form>
+    <div id="area">
+
+    </div><br><br>
+    <div id="circ">
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q2.Loop</title>
+    <!--2. Accept an integer value and a message from user and print the message that many number oftimes.-->
+    <script>
+      function loop() {
+        var num = Number(document.getElementById("num").value);
+        var msg = document.getElementById("msg").value;
+        var str = "";
+        for (var i = 0; i < num; i++) {
+          str = str + "<br>" + msg;
+        }
+        document.getElementById("loopOutput").innerHTML = str;
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      Number : <input type="number" name="num" id="num" /> <br /><br />
+      Message :
+      <input type="text" name="text" id="msg" /><br /><br />
+      <button type="button" onclick="loop()">Submit</button><br /><br />
+      <button type="reset">Reset</button>
+    </form>
+    <div id="loopOutput"></div>
+  </body>
+</html>
